@@ -1,0 +1,78 @@
+{% load static %}
+
+
+<div class="container-fluid" style="height: 50.5vw;" id="ContactBlock">
+    <div class="row" style="height: 5vw;">
+        <div class="col-sm-1">
+            
+        </div>
+        <div class="col-sm-11">
+            <div class="ContactHeader">
+                ¡Expande tu negocio en este nuevo<br>modelo digital interactivo y obtén una<br>mayor difusión!
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 10vw;">
+    </div>
+    <div class="row" style="height: 28vw;">
+        <div class="col-sm-2">
+            
+        </div>
+        <div class="col-sm-8" style="background-color: #3C456B; opacity: .45;">
+            <form class="ContactForm" method="POST" id="Contact">
+            {% csrf_token %}
+                <div class="row" style="height:8vw;">
+                    <input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="Contact">
+                    <div class="col-sm-12 ContactTitle">
+                            ¡Contáctanos y obtén una demostración!
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="InputText ContactFormElement" type="text" id="nombreForm" name="nombreForm" placeholder="Nombre..." >
+                    </div>
+                    <div class="col-sm-1">
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="InputText ContactFormElement" type="text" id="correoForm" name="correoForm" placeholder="Correo..." >
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-1">
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="InputText ContactFormElement" type="text" id="telefonoForm" name="telefonoForm" placeholder="Telefono..." >
+                    </div>
+                    <div class="col-sm-1">
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="cars" class="ContactFormElement" name="interes">
+                            <option value="Eventos" selected="">Eventos</option>
+                            <option value="Paquetes y precios">Paquetes y precios</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-1">
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <textarea  class="InputText ContactTextArea" id="mensajeForm" name="mensajeForm" placeholder="Mensaje..." rows="5" cols="30"></textarea>
+                    </div>
+                    
+                </div>
+
+                <button class="center" id="ContactButtonSubmit" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>

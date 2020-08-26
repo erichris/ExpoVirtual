@@ -1,0 +1,111 @@
+{% load static %}
+
+
+<script type="text/javascript">
+    var isOne = true;
+    function switchPanel(){
+        if(isOne){
+            document.getElementById("Beneficios1").style.display = "none";
+            document.getElementById("Beneficios2").style.display = "block";
+        }else{
+            document.getElementById("Beneficios1").style.display = "block";
+            document.getElementById("Beneficios2").style.display = "none";
+        }
+        isOne = !isOne;
+    }
+</script>
+
+<div class="container-fluid" style="height: 50.5vw; background-color: #2C303E;">
+    <div class="row" style="height: 10vw;">
+        <div>
+            <p  id="FeriasHeader">BENEFICIOS DE LOS EVENTOS VIRTUALES</p>
+        </div>
+        <div>
+            <img id="ArrowI" class="" src="{% static "images/flechaizquierda.png"%}" onclick="switchPanel();">
+        </div>
+        <div>
+            <img id="ArrowD" class="" src="{% static "images/flechaderecha.png"%}" onclick="switchPanel();">
+        </div>
+        
+    </div>
+    <div class="row" style="height: 35vw;">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10" id="Beneficios1" >
+            <div class="row" style="height: 35vw;">
+                <div class="col-sm-4">
+                    <div style="height:10vw;">
+                        <img id="" class="FeriaIcon center" src="{% static "images/costos.png"%}">
+                    </div>
+                    <div class="FeriaTitle" style="height:3vw;">
+                        COSTOS
+                    </div>
+                    <div class="FeriaText">
+                        Tu Expo Virtual tiene un costo menor a comparación de las presenciales de hasta un 80%, debido a que no se requiere el alquiler de mobiliario, hoteles, traslados, viáticos de personal, etc. Además puedes repetir Tu Expo Virtual las veces que requieras al año sin problemas de logística.
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div style="height:10vw;">
+                        <img id="" class="FeriaIcon center" src="{% static "images/impactoalvisitante.png"%}">
+                    </div>
+                    <div class="FeriaTitle" style="height:3vw;">
+                        IMPACTO AL VISITANTE
+                    </div>
+                    <div class="FeriaText">
+                        Los visitantes pueden acceder a la plataforma con cualquier dispositivo con conexión a internet y  gracias a esta facilidad poder asistir a los eventos y obtener información desde cualquier parte del mundo, con la flexibilidad de manejar tus horarios, este esquema permite reducir los gastos porlos diferentes  conceptos.
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div style="height:10vw;">
+                        <img id="" class="FeriaIcon center" src="{% static "images/beneficioexpositor.png"%}">
+                    </div>
+                    <div class="FeriaTitle" style="height:3vw;">
+                        BENEFICIO AL EXPOSITOR
+                    </div>
+                    <div class="FeriaText">
+                        Al ser una herramienta digital el expositor tiene la posibilidad de ofrecer una amplia gama de información, como catálogos, videos y chat), además la flexibilidad de modificar sus stand y ajustarse a tus necesidades sin necesidad de grandes inversiones.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-10" id="Beneficios2" style="display:none;">
+            <div class="row" style="height: 35vw;">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-4">
+                    <div style="height:10vw;">
+                        <img id="" class="FeriaIcon center" src="{% static "images/comunicaciones.png"%}">
+                    </div>
+                    <div class="FeriaTitle" style="height:3vw;">
+                        COMUNICACIONES
+                    </div>
+                    <div class="FeriaText">
+                        Todos los visitantes podrán tener acceso a un sistema de comunicación virtual por cada STAND y la asistencia a ponencias o mesas redondas.
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-4">
+                    <div style="height:10vw;">
+                        <img id="" class="FeriaIcon center" src="{% static "images/indicadores.png"%}">
+                    </div>
+                    <div class="FeriaTitle" style="height:3vw;">
+                        INDICADORES
+                    </div>
+                    <div class="FeriaText">
+                        Tanto los expositores como el administrador podrá tener los indicadores sobre todas las personas que han asistido a su stand y los datos de contacto de esas personas, lo cual en una expo presencial, esos datos suelen ser de difícil recolección.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row" style="height: 5vw;">
+
+    </div>
+</div>

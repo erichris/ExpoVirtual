@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Staff - Staff Admin
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+
+	<div id="CreateExpoBox" class="col-sm-6">
+        <p class="" id="">Crear Expo</p>
+        <form method="POST" id="Login">
+        {% csrf_token %}
+        	<div id="CreateExpoForm">
+	        	<input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="CreateExpo">
+	            <input class="InputText" type="text" id="nombreExpo" name="nombreExpo" placeholder="Nombre de la Expo" autocomplete="off"><br>
+	            <label for="numeroStands">Selecciona el numero de stands:</label><br>
+	            <select id="numeroStands" name="numeroStands">
+				    <option value="40">40</option>
+				    <option value="80" selected>80</option>
+				    <option value="120">120</option>
+				</select><br>
+				
+				<label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
+	            <input type="datetime-local" id="start"
+			       name="HoraInicio" value="2020-08-12T00:00"><br>
+			    
+			    <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
+			    <input type="datetime-local" id="end"
+			       name="HoraFin" value="2020-08-12T00:00"><br>
+	            <button type="submit">ENTRAR</button>
+            </div>
+		</form>
+	</div>
+
+
+	
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

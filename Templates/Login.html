@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Staff - Login
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+
+	<div id="LoginBox" class="col-sm-6">
+        <p class="" id="">Ingresa</p>
+        <form class="LoginForm" method="POST" id="Login">
+        {% csrf_token %}
+        	<div id="loginPage1">
+	        	<input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="Login">
+	            <input class="InputText" type="text" id="userForm" name="user" placeholder="Usuario" autocomplete="off">
+	            <input class="InputText" type="password" id="passForm" name="pass" placeholder="Contraseña" autocomplete="off">
+	            <button type="submit">ENTRAR</button>
+            </div>
+		</form>
+	</div>
+
+
+	
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}
+
+
+

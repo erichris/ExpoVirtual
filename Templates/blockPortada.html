@@ -1,0 +1,35 @@
+{% load static %}
+
+<script>
+    $(document).ready(function(){
+        $("#PortadaDown").click(function(){
+            window.location.hash = '#FuncionBlock';
+        });
+    });
+</script>
+
+<img src="{% static "images/fondo2.jpg"%}" style="position:absolute; width: 100vw;z-index: -1000; top:-37vw;">
+<div class="container-fluid" id="QuizID" style="height: 50.5vw;">
+    <div class="row" style="height: 13vw;">
+    	<div class="col-sm-4"></div>
+    	<div class="col-sm-4">
+    		<img id ="PortadaLogo" src="{% static "images/logo.png"%}">
+    	</div>
+    </div>
+    <div class="row" style="height: 34vw; background: url({% static 'images/imgstand.jpg'%}); background-repeat: no-repeat;background-size:cover;background-position: right top;">
+    	<div class="col-sm-1"></div>
+    	<div class="col-sm-4" id="PortadaPhrase">
+    		Una nueva ventana digital para proyectar <br>tu negocio
+    	</div>
+    	<div class="col-sm-1"></div>
+    	<div class="col-sm-5">
+    		<div id="PortadaMoreInfo">
+                <a class="nav-link navMenu" href="#ContactBlock">Quiero mas información</a>
+    		</div>
+    		
+    	</div>
+    </div>
+    <div class="row" style="height: 3.5vw;" id="PortadaGrayFooter">
+    	<img id ="PortadaDown" class="center" src="{% static "images/botonbajar.png"%}">
+    </div>
+</div>

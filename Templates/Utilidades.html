@@ -1,0 +1,26 @@
+<script>
+	    $("#ButtonSendLogin").click (function () {
+	        var name = $("#userForm").val();
+	        var pass = $("#passForm").val();
+	        var action = "Login"
+
+	        $.ajax({
+	            url: 'Login',
+	            type: 'POST',
+	            data: {
+	                'Action': action,
+	                'user': name,
+	                'pass': pass
+	            },
+	            dataType: 'json',
+	            success: function (data) {
+	                if(data.content.status == 0){
+	                    window.location.replace(data.content.redirectURL);
+	                }else{
+	                    restartregisterBoxes();
+	                    alert(data.content.message)
+	                }
+	            }
+	        });
+	    });
+    </script>

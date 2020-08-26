@@ -1,0 +1,351 @@
+#PortadaLogo{
+	position: relative;
+	top: 2.5vw;
+	height: 10vw;
+
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+#PortadaPhrase{
+	position: relative;
+	top: 13vw;
+	font-size: 3.6vw;
+	color: white;
+	font-family: Lato;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+#PortadaMoreInfo{
+	position: relative;
+	top: 23vw;
+	font-size: 2.2vw;
+	color: white;
+	font-family: Myriad;
+	font-weight: bold;
+	white-space: nowrap;
+	border-style: solid;
+	background: #81D742;
+	border-color: #81D742;
+	border-radius: 10px;
+	height: 5vw;
+	width: 40vw;
+	text-align: center;
+	margin: auto;
+	padding: .55vw;
+}
+
+#PortadaGrayFooter{
+	background-color: #B3B3B3;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#PortadaDown{
+	position: relative;
+	top: -.5vw;
+	height: 5vw;
+	width: 5vw;
+}
+
+body{
+	background-color: #EEF1F1;
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+#FuncionHeader{
+	font-size: 2.2vw;
+	color: #010101;
+	font-family: Myriad;
+	white-space: nowrap;
+}
+
+#FuncionBackground{
+	position: absolute;
+	left: 2vw;
+	background-color: #2C303E;
+}
+
+#FuncionAdornoVerde{
+	position: relative;
+	right: 2vw;
+	top:2.5vw;
+	height: 28vw;
+}
+
+#FuncionImage{
+	position: relative;
+	width: 38vw;
+	left: -2vw;
+	top:4vw;
+}
+
+#FuncionComponentHeader{
+	position: relative;
+	font-size: 2.4vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	width: 42vw;
+	text-align: center;
+	top: 3.5vw;
+	left: -4vw;
+}
+
+#FuncionDescription{
+	position: relative;
+	font-size: 1.7vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	width: 42vw;
+	top: 3.5vw;
+}
+
+.GreenHeader{
+	position: relative;
+	font-size: 1.5vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	border-style: solid;
+	background: #81D742;
+	border-color: #81D742;
+	height: 3vw;
+	width: 32vw;
+	text-align: center;
+	margin: auto;
+	padding: 0vw;
+}
+
+.FillImg{
+	height: 18vw;
+	width: 100%;
+}
+
+.ContainerFillImg{
+	width: 32vw;
+}
+
+.StandsBottomText{
+	position: relative;
+	top: 2vw;
+	width: 32vw;
+	text-align: justify;
+	font-family: Myriad;
+	color: #282728;
+	font-size: 1.9vw;
+}
+
+#GreenHeader1{
+	width: 24vw;
+}
+
+#ContainerFillImg1{
+	width: 24vw;
+	height: 
+}
+
+#FillImg1{
+	height: 15.5vw;
+}
+
+#StandsBottomText1{
+	position: relative;
+	right: -1vw;
+}
+
+#StandsBottomText2{
+	position: relative;
+	right: -1vw;
+	top: .5vw;
+}
+
+#AplicacionHeader{
+	font-size: 2.2vw;
+	color: #010101;
+	font-family: Myriad;
+	white-space: nowrap;
+	color: #282728;
+}
+
+#AplicacionSubheader{
+	font-size: 1.6vw;
+	color: #010101;
+	font-family: Myriad;
+	color: #282728;
+}
+
+.AplicacionContainer{
+	background-color: red;
+}
+
+.AplicacionIcono{
+	position: relative;
+	top: .5vw;
+	width: 5vw;
+}
+
+.AplicacionText{
+	position: relative;
+	top: 0.3vw;
+	right: -2vw;
+	font-size: 1.6vw;
+	color: #010101;
+	font-family: Myriad;
+	color: #282728;
+}
+
+
+#FeriasHeader{
+	font-size: 1.6vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	text-align: center;
+	width: 100vw;
+	position: relative;
+	top:2vw;
+}
+
+#ArrowD{
+	position: relative;
+	top: -3.4vw;
+	right: -66vw;
+	width: 1vw;
+	height: 2vw;
+}
+
+#ArrowI{
+	position: relative;
+	top: -3.4vw;
+	right: -32vw;
+	width: 1vw;	
+	height: 2vw;
+}
+
+
+.FeriaTitle{
+	position: relative;
+	font-size: 1.5vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	text-align: center;
+	margin: auto;
+}
+
+.FeriaIcon{
+	width: 7vw;
+}
+
+.FeriaText{
+	position: relative;
+	font-size: 1.5vw;
+	color: white;
+	font-family: Myriad;
+	margin: auto;
+	text-align: justify;
+	padding: 1vw;
+}
+
+.PreguntasHeader{
+	position: relative;
+	font-size: 2.2vw;
+	color: #292829;
+	font-family: Myriad;
+	white-space: nowrap;
+	text-align: center;
+	margin: auto;
+	top: 10vw;
+	height: 16.5vw;
+}
+
+.PreguntasQuestion{
+	position: relative;
+	font-size: 1.5vw;
+	color: #292829;
+	font-family: Myriad;
+	white-space: nowrap;
+	text-align: center;
+	margin: auto;
+	height: 4vw;
+}
+
+.ContactHeader{
+	position: relative;
+	font-size: 2.2vw;
+	color: #292829;
+	font-family: Myriad;
+	white-space: nowrap;
+	text-align: left;
+	top: 2vw;
+	margin: auto;
+	height: 16.5vw;
+}
+
+.ContactFormElement{
+	width: 25vw;
+	margin: .5vw;
+}
+
+.ContactTextArea{
+	width: 52.5vw;
+	margin: .5vw;
+}
+
+#ContactButtonSubmit{
+	position: relative;
+	font-size: 2.2vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	border-style: solid;
+	background: #81D742;
+	border-color: #81D742;
+	border-radius: 10px;
+	height: 5vw;
+	width: 35vw;
+	text-align: center;
+	margin: auto;
+	top: 1vw;
+	padding: .55vw;
+	opacity: 1;
+}
+
+
+.ContactTitle{
+	position: relative;
+	font-size: 1.6vw;
+	color: white;
+	font-family: Myriad;
+	white-space: nowrap;
+	text-align: center;
+	margin: auto;
+	top: 0vw;
+}
+
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
