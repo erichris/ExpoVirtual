@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Staff - Staff Edit Expo
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+
+	<div id="EditExpoBox" class="col-sm-6">
+        <p class="" id="">Editar Expo</p>
+        <form method="POST">
+        {% csrf_token %}
+        	<div id="EditExpoForm">
+	        	<input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="EditExpo">
+	            
+	            <input class="InputText" type="text" id="nombreExpo" name="nombreExpo" placeholder="Nombre de la Expo" autocomplete="off" value= {{ expo.nombre }}><br>
+	            
+	            <label for="numeroStands">Selecciona el numero de stands:</label><br>
+
+			    <label for="myfile">Seleciona el BannerA para el hall principal:</label><br>
+  				<input type="file" id="BannerA" name="BannerA"><br>
+
+  				<label for="myfile">Seleciona el BannerB para el hall principal:</label><br>
+  				<input type="file" id="BannerB" name="BannerB"><br>
+
+  				<label for="myfile">Seleciona el video principal del Hall:</label><br>
+  				<input type="file" id="VideoHall" name="VideoHall"><br>
+
+  				<label for="myfile">Seleciona el triptico de informacion:</label><br>
+  				<input type="file" id="Triptico" name="Triptico"><br>
+
+  				<label for="myfile">Sube una imagen con tu calendario:</label><br>
+  				<input type="file" id="Calendario" name="Calendario"><br>
+
+	            <button type="submit">GUARDAR CAMBIOS</button>
+
+            </div>
+		</form>
+	</div>
+
+	<a href="layout">Editar Expo</a>
+
+
+	
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

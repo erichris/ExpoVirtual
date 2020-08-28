@@ -99,8 +99,8 @@ class PlatformUser(models.Model):
 
 	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 	name = models.CharField(default="default", max_length=40, null=True, blank=True)
-	user_expo = models.ForeignKey(Expo, on_delete=models.CASCADE, null=True, blank=True)
-	user_stand = models.ForeignKey(Stand, on_delete=models.CASCADE, null=True, blank=True)
+	user_expo = models.ManyToManyField(Expo, null=True, blank=True)
+	user_stand = models.ManyToManyField(Stand, null=True, blank=True)
 	user_type = models.CharField(
         max_length=3,
         choices=UserType.choices,

@@ -1,0 +1,657 @@
+
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><!-- BEGIN HEAD --><head>
+    <meta charset="ISO-8859-1">
+    <title>Semáforo Delictivo</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <link href="http://queretaro.semaforo.com.mx/Content/Themes/Metronic/css/base-UI-1?v=Y0Q9M5_JnrMeTC2Z-Vpqr5D9zeTi5l3o4S2pr5M689E1" rel="stylesheet">
+
+    <link href="http://queretaro.semaforo.com.mx/Content/Themes/Metronic/font-awesome/css/font-awesome?v=dAjXbSU-eHhnfA2DtEPj7Y3ub7QjJohX83d39OaJkJs1" rel="stylesheet">
+
+    <link href="http://queretaro.semaforo.com.mx/Content/Themes/Metronic/css/base-UI-2?v=nuJclRrnV75HzHJq1YjVnedQ-cuK934Gjf609-iceA81" rel="stylesheet">
+
+    <!--[if IE 8]><link rel="stylesheet" href="/Content/Themes/Metronic/font-awesome-ie7"><![endif]-->
+    <link href="http://queretaro.semaforo.com.mx/Content/Themes/Metronic/css/select2?v=ZPhXPddktIlAy9rvQhMT4i19Da3-8T6eSnY_iLvBeo81" rel="stylesheet">
+
+    <link href="http://queretaro.semaforo.com.mx/Content/Themes/Metronic/css/smartmenu?v=mz7jRinMaartKr_hte1wziQNQnhess_ptn4kJ1e47J81" rel="stylesheet">
+
+    
+
+
+    <script src="https://connect.facebook.net/en_US/sdk.js?hash=406f50802472e305720b67b4f8b9eada&amp;ua=modern_es6" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="http://platform.twitter.com/widgets.js"></script><script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.0"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script src="http://queretaro.semaforo.com.mx/js/modernizr?v=qVODBytEBVVePTNtSFXgRX0NCEjh9U_Oj8ePaSiRcGg1"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/jquery?v=9qlOuiLMDkIB0NzJimz6lX5ldRxSxrgBXdv1n5tvEMo1"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/jqueryUI?v=H5JR8C7P6LOCtPw8V_YAwOjYqjMVkDN7dk4N9v-ab7Q1"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/smartmenusjs?v=tmnnizT2JiWgI7K9_wAsbJ_wM8jxxjpkDiZgFQKj1501"></script>
+
+    <link rel="shortcut icon" href="http://queretaro.semaforo.com.mx/Content/ImagesApp/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-50818894-1', 'semaforo.com.mx');
+        ga('send', 'pageview');
+
+    </script>
+    <!-- SmartMenus jQuery init -->
+    <script type="text/javascript">
+        $(function () {
+            $('#main-menu').smartmenus({
+                mainMenuSubOffsetX: -1,
+                mainMenuSubOffsetY: 4,
+                subMenusSubOffsetX: 6,
+                subMenusSubOffsetY: -6
+            });
+        });
+    </script>
+<style type="text/css" data-fbcssmodules="css:fb.css.basecss:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed page-footer-fixed page-sidebar-fixed page-sidebar-closed" style="">
+    <input data-val="true" data-val-number="The field _id_indicador must be a number." data-val-required="The _id_indicador field is required." id="_id_indicador" name="_id_indicador" type="hidden" value="">
+    <input data-val="true" data-val-number="The field _id_mpo must be a number." data-val-required="The _id_mpo field is required." id="_id_mpo" name="_id_mpo" type="hidden" value="0">
+    <input data-val="true" data-val-number="The field _nom_mpo must be a number." data-val-required="The _nom_mpo field is required." id="_nom_mpo" name="_nom_mpo" type="hidden" value="Querétaro">
+    <input data-val="true" data-val-number="The field _anio must be a number." data-val-required="The _anio field is required." id="_anio" name="_anio" type="hidden" value="2020">
+    <input data-val="true" data-val-number="The field _mes must be a number." data-val-required="The _mes field is required." id="_mes" name="_mes" type="hidden" value="6">
+    <!-- BEGIN HEADER -->
+    <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
+    </script>
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <!-- BEGIN LOGO -->
+
+                <a class="brand" href="/">
+                    <img src="http://queretaro.semaforo.com.mx/Content/ImagesApp/logo-mini-Quer%c3%a9taro.png" id="logo-mini" style="height: 30px" alt="logo">
+
+                </a>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                    <img src="http://queretaro.semaforo.com.mx/Content/Themes/Metronic/img/menu-toggler.png" alt="">
+                </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <ul class="nav pull-right">
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <!-- END USER LOGIN DROPDOWN -->
+                    <li id="seleccion_anio_mes"><select id="idSlxMes" style="margin-top:4px;margin-left: 5px" class="small m-wrap tooltips no-tooltip-on-touch-device responsive" tabindex="1" data-original-title="" title=""><option value="7" selected="">Julio</option><option value="6">Junio</option><option value="5">Mayo</option><option value="4">Abril</option><option value="3">Marzo</option><option value="2">Febrero</option><option value="1">Enero</option></select><select id="idSlxAnio" style="margin-top:4px;margin-left: 5px" class="small m-wrap tooltips no-tooltip-on-touch-device responsive" tabindex="1" data-original-title="" title=""><option value="2020" selected="">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option></select></li>
+                </ul>
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <ul class="sm sm-clean pull-right" id="main-menu" data-smartmenus-id="1598558790593876">
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+
+                    <li style="margin-top:4px">
+                        <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                            Semáforos Estatales
+                        </a>
+                        <ul class="sm-nowrap" style="display: none; width: auto; min-width: 10em; max-width: 20em; top: auto; left: 0px; margin-left: -1px; margin-top: 4px;">
+                            <li>
+                                <a href="http://aguascalientes.semaforo.com.mx">Aguascalientes</a>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    B
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://bc.semaforo.com.mx">Baja California</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://bcs.semaforo.com.mx">Baja California Sur</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    C
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://campeche.semaforo.com.mx">Campeche</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://chiapas.semaforo.com.mx">Chiapas</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://chihuahua.semaforo.com.mx">Chihuahua</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://coahuila.semaforo.com.mx">Coahuila</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://colima.semaforo.com.mx">Colima</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    D
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://df.semaforo.com.mx">Distrito Federal</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://durango.semaforo.com.mx">Durango</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://edomex.semaforo.com.mx">Estado de México</a>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    G
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://guanajuato.semaforo.com.mx">Guanajuato</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://guerrero.semaforo.com.mx">Guerrero</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://hidalgo.semaforo.com.mx">Hidalgo</a>
+                            </li>
+                            <li>
+                                <a href="http://jalisco.semaforo.com.mx">Jalisco</a>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    M
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://michoacan.semaforo.com.mx">Michoacan</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://morelos.semaforo.com.mx">Morelos</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    N
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://nayarit.semaforo.com.mx">Nayarit</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://nl.semaforo.com.mx">Nuevo León</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://oaxaca.semaforo.com.mx">Oaxaca</a>
+                            </li>
+                            <li>
+                                <a href="http://puebla.semaforo.com.mx">Puebla</a>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    Q
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://queretaro.semaforo.com.mx">Querétaro</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://qroo.semaforo.com.mx">Quintana Roo</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    S
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://slp.semaforo.com.mx">San Luis Potosí</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://sinaloa.semaforo.com.mx">Sinaloa</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://sonora.semaforo.com.mx">Sonora</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top:4px">
+                                <a href="javascript:;" class="has-submenu"><span class="sub-arrow">+</span>
+                                    T
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="http://tabasco.semaforo.com.mx">Tabasco</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://tamaulipas.semaforo.com.mx">Tamaulipas</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://tlaxcala.semaforo.com.mx">Tlaxcala</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="http://veracruz.semaforo.com.mx">Veracruz</a>
+                            </li>
+                            <li>
+                                <a href="http://yucatan.semaforo.com.mx">Yucatán</a>
+                            </li>
+                            <li>
+                                <a href="http://zacatecas.semaforo.com.mx">Zacatecas</a>
+                            </li>
+                            <li>
+                                <a href="http://www.semaforo.com.mx">Semáforo Nacional</a>
+                            </li>
+                        </ul>
+                            </li>
+                        </ul>
+                <!-- END TOP NAVIGATION MENU -->
+
+            </div>
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar nav-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 847px;"><ul class="page-sidebar-menu" style="overflow: hidden; width: auto; height: 847px;">
+                <li>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    <div class="sidebar-toggler hidden-phone"></div>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                </li>
+                <li>
+                    <div class="hidden-phone" style="height: 20px"></div>
+                </li>
+
+                <li id="id_menu_regresar">
+                </li>
+
+                <li>
+                    <div class="hidden-phone" style="height: 20px"></div>
+                </li>
+
+
+                
+
+                <li class="start active ">
+                    <a class="active" href="javascript:;">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">Semáforo</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul id="id_menu_semaforo" class="sub-menu"><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;accion=Index&amp;controlador=Semaforo"><i class="icon-caret-right"></i> Semáforo Delictivo</a></li><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;accion=SemaforoPresentacion&amp;controlador=Semaforo"><i class="icon-caret-right"></i> Semáforo Delictivo Anual</a></li><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;es_porcentaje=undefined&amp;id_rango_de_tiempo=undefined&amp;accion=Incidencia&amp;controlador=Semaforo"><i class="icon-caret-right"></i> Gráfica</a></li><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;es_porcentaje=undefined&amp;id_rango_de_tiempo=undefined&amp;accion=Perfil&amp;controlador=Semaforo"><i class="icon-caret-right"></i>  Perfil Delictivo</a></li><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;es_porcentaje=undefined&amp;id_rango_de_tiempo=undefined&amp;accion=ComparativoAnual&amp;controlador=Semaforo"><i class="icon-caret-right"></i>  Comparativo</a></li><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;es_porcentaje=undefined&amp;id_rango_de_tiempo=undefined&amp;accion=Ultimos5Anios&amp;controlador=Semaforo"><i class="icon-caret-right"></i>  Tabla</a></li><li style="display:none"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;es_porcentaje=undefined&amp;id_rango_de_tiempo=undefined&amp;accion=Detalles&amp;controlador=Semaforo"><i class="icon-caret-right"></i>  Detalle de Incidentes</a></li><li><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=8&amp;accion=Metodologia&amp;controlador=Semaforo"><i class="icon-caret-right"></i>  Metodología</a></li></ul>
+                    <ul class="sub-menu">
+                        <li><a href="javascript:;" class="trigger_fullscreen"><i class="icon-move"></i> Pantalla Completa</a></li>
+                        <li>
+                            <a href="http://www.semaforo.mx" class="dropdown-toggle">
+                                <i class="icon-home"></i>
+                                <span class="username">Regresar semaforo.mx</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://queretaro.semaforo.com.mx/../Semaforo/SemaforoTutorial">
+                                <i class="icon-facetime-video"></i>
+                                <span class="username">Video Tutorial</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://es.surveymonkey.com/s/Mexico2014" target="_blank">
+                                <i class="icon-user"></i>
+                                <span class="username">Participa en la Encuesta</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul><div class="slimScrollBar ui-draggable" style="background: rgb(161, 178, 189); width: 7px; position: absolute; top: 0px; opacity: 0.3; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 847px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        <div class="page-content" style="min-height:847px !important">
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div id="id_titulo"><h3 class="page-title">Semáforo Delictivo<br>En <b>Querétaro</b>, <b>Junio 2020</b></h3></div>
+                        <div id="id_indicador_semaforo" class="indicador-semaforo"></div>
+                        <hr style="display: none;">
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <div>
+                    
+
+
+<div id="id_semaforo_municipio" class="portlet" style="top: -30px; position: relative; margin-bottom: -30px;"><div class="portlet-title"><div class="caption"></div><div class="tools"><a href="javascript:;" class="collapse"></a></div></div><div class="portlet-body"><div class="row-fluid"><div class="span4 responsive"><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>8</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-5.png" alt="HOMICIDIOS"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>0</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-7.png" alt="SECUESTRO"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>18</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-6.png" alt="EXTORSION"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>72</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-10.png" alt="NARCOMENUDEO"></div></div></div></a></div></div><div class="span4 responsive"><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>238</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-3.png" alt="ROBO A VEHICULO"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>190</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-1.png" alt="ROBO A CASA"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-amarillo-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>232</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-2.png" alt="ROBO A NEGOCIO"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-amarillo-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>397</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-4.png" alt="LESIONES"></div></div></div></a></div></div><div class="span4 responsive"><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>46</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-8.png" alt="VIOLACION"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>261</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/b-indicador-9.png" alt="VIOLENCIA FAMILIAR"></div></div></div></a></div><div class="col-3 responsive span3" data-tablet="span3" data-desktop="span3"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><div class="circle-stat"><div class="visual"><img src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-soporte.png" style="width: 30px;"></div><div class="details"><div class="title"></div><div class="number"><b>0</b></div><div class="title"><img style="width: 65px;" class="alto_elemento_parrilla" src="../Content/ImagesApp/Indicadores/b-indicador-11.png" alt="FEMINICIDIO"></div></div></div></a></div></div></div></div></div>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet solid bordered light-grey">
+
+            <div class="portlet-body">
+                <div>
+                    
+                    <table id="parrilla" class="parrilla-semaforo"><td class="parrilla-indicadores-primero"><table><tbody><tr><td></td><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-5.png" alt="5"></td></tr><tr><td><div class="parrilla_titulo_municipio">Amealco De Bonfil</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Amealco De Bonfil: 1 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Cadereyta De Montes</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Cadereyta De Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Colon</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Colon: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Corregidora</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Corregidora: 1 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Ezequiel Montes</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Ezequiel Montes: 2 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Huimilpan</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Huimilpan: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">El Marques</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en El Marques: 0 incidentes en el mes, 
+ media:2, meta:2" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Pedro Escobedo</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Pedro Escobedo: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Queretaro</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Queretaro: 3 incidentes en el mes, 
+ media:7, meta:5" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">San Juan Del Rio</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en San Juan Del Rio: 1 incidentes en el mes, 
+ media:2, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio">Tequisquiapan</div></td><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Tequisquiapan: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><div class="parrilla_titulo_municipio-0">Queretaro</div></td><td class="parrilla_estado parrilla_estado_inicial"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=5&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="HOMICIDIOS en Queretaro: 8 incidentes en el mes, 
+ media:15, meta:11" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-7.png" alt="7"></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Amealco De Bonfil: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Cadereyta De Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Colon: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Corregidora: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Ezequiel Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Huimilpan: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en El Marques: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Pedro Escobedo: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Queretaro: 0 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en San Juan Del Rio: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Tequisquiapan: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td class="parrilla_estado"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=7&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="SECUESTRO en Queretaro: 0 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-6.png" alt="6"></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Amealco De Bonfil: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Cadereyta De Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Colon: 1 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Corregidora: 2 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Ezequiel Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Huimilpan: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en El Marques: 1 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Pedro Escobedo: 1 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Queretaro: 8 incidentes en el mes, 
+ media:7, meta:5" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en San Juan Del Rio: 5 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Tequisquiapan: 0 incidentes en el mes, 
+ media:0, meta:0" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td class="parrilla_estado"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=6&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="EXTORSION en Queretaro: 18 incidentes en el mes, 
+ media:10, meta:7" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-10.png" alt="10"></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Amealco De Bonfil: 1 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Cadereyta De Montes: 1 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Colon: 3 incidentes en el mes, 
+ media:2, meta:2" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Corregidora: 2 incidentes en el mes, 
+ media:9, meta:7" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Ezequiel Montes: 5 incidentes en el mes, 
+ media:2, meta:2" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Huimilpan: 0 incidentes en el mes, 
+ media:1, meta:1" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en El Marques: 8 incidentes en el mes, 
+ media:17, meta:13" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Pedro Escobedo: 1 incidentes en el mes, 
+ media:4, meta:3" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Queretaro: 33 incidentes en el mes, 
+ media:57, meta:43" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en San Juan Del Rio: 16 incidentes en el mes, 
+ media:16, meta:12" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Tequisquiapan: 2 incidentes en el mes, 
+ media:2, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td class="parrilla_estado"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=10&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="NARCOMENUDEO en Queretaro: 72 incidentes en el mes, 
+ media:102, meta:77" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Indicadores/c-indicador-3.png" alt="3"></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Amealco De Bonfil: 3 incidentes en el mes, 
+ media:6, meta:5" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Cadereyta De Montes: 1 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Colon: 4 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Corregidora: 16 incidentes en el mes, 
+ media:27, meta:20" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Ezequiel Montes: 3 incidentes en el mes, 
+ media:6, meta:5" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Huimilpan: 2 incidentes en el mes, 
+ media:2, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en El Marques: 28 incidentes en el mes, 
+ media:31, meta:23" src="http://queretaro.semaforo.com.mx/../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Pedro Escobedo: 6 incidentes en el mes, 
+ media:12, meta:9" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Queretaro: 144 incidentes en el mes, 
+ media:281, meta:211" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en San Juan Del Rio: 27 incidentes en el mes, 
+ media:84, meta:63" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Tequisquiapan: 4 incidentes en el mes, 
+ media:9, meta:7" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td class="parrilla_estado"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=3&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A VEHICULO en Queretaro: 238 incidentes en el mes, 
+ media:466, meta:350" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-1.png" alt="1"></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Amealco De Bonfil: 4 incidentes en el mes, 
+ media:6, meta:5" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Cadereyta De Montes: 0 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Colon: 2 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Corregidora: 19 incidentes en el mes, 
+ media:30, meta:23" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Ezequiel Montes: 4 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Huimilpan: 2 incidentes en el mes, 
+ media:4, meta:3" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en El Marques: 22 incidentes en el mes, 
+ media:29, meta:22" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Pedro Escobedo: 1 incidentes en el mes, 
+ media:6, meta:4" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Queretaro: 86 incidentes en el mes, 
+ media:168, meta:126" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en San Juan Del Rio: 35 incidentes en el mes, 
+ media:45, meta:34" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Tequisquiapan: 13 incidentes en el mes, 
+ media:9, meta:7" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td class="parrilla_estado"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=1&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A CASA en Queretaro: 190 incidentes en el mes, 
+ media:311, meta:233" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-2.png" alt="2"></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Amealco De Bonfil: 1 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Cadereyta De Montes: 0 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Colon: 2 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Corregidora: 11 incidentes en el mes, 
+ media:22, meta:17" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Ezequiel Montes: 1 incidentes en el mes, 
+ media:2, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Huimilpan: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en El Marques: 15 incidentes en el mes, 
+ media:13, meta:10" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Pedro Escobedo: 2 incidentes en el mes, 
+ media:4, meta:3" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Queretaro: 176 incidentes en el mes, 
+ media:200, meta:150" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en San Juan Del Rio: 19 incidentes en el mes, 
+ media:26, meta:20" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Tequisquiapan: 4 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td class="parrilla_estado"><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=2&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="ROBO A NEGOCIO en Queretaro: 232 incidentes en el mes, 
+ media:272, meta:204" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-4.png" alt="4"></td></tr><tr><td><a href="http://queretaro.semaforo.com.mx/../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Amealco De Bonfil: 12 incidentes en el mes, 
+ media:7, meta:5" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Cadereyta De Montes: 8 incidentes en el mes, 
+ media:7, meta:5" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Colon: 9 incidentes en el mes, 
+ media:8, meta:6" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Corregidora: 24 incidentes en el mes, 
+ media:32, meta:24" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Ezequiel Montes: 9 incidentes en el mes, 
+ media:4, meta:3" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Huimilpan: 9 incidentes en el mes, 
+ media:4, meta:3" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en El Marques: 35 incidentes en el mes, 
+ media:43, meta:32" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Pedro Escobedo: 17 incidentes en el mes, 
+ media:16, meta:12" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Queretaro: 180 incidentes en el mes, 
+ media:231, meta:173" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en San Juan Del Rio: 50 incidentes en el mes, 
+ media:55, meta:41" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Tequisquiapan: 13 incidentes en el mes, 
+ media:12, meta:9" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td class="parrilla_estado"><a href="../Semaforo/Wrapper?id_indicador=4&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="LESIONES en Queretaro: 397 incidentes en el mes, 
+ media:433, meta:325" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-8.png" alt="8"></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Amealco De Bonfil: 2 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Cadereyta De Montes: 2 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Colon: 2 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Corregidora: 5 incidentes en el mes, 
+ media:2, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Ezequiel Montes: 0 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Huimilpan: 2 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en El Marques: 3 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Pedro Escobedo: 0 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Queretaro: 18 incidentes en el mes, 
+ media:19, meta:14" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en San Juan Del Rio: 6 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Tequisquiapan: 4 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td class="parrilla_estado"><a href="../Semaforo/Wrapper?id_indicador=8&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLACION en Queretaro: 46 incidentes en el mes, 
+ media:35, meta:26" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-9.png" alt="9"></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Amealco De Bonfil: 5 incidentes en el mes, 
+ media:3, meta:2" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Cadereyta De Montes: 8 incidentes en el mes, 
+ media:5, meta:4" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Colon: 14 incidentes en el mes, 
+ media:2, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Corregidora: 11 incidentes en el mes, 
+ media:14, meta:10" src="../Content/ImagesApp/Semaforos/semaforo-amarillo-opcion-8.png" alt="A"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Ezequiel Montes: 7 incidentes en el mes, 
+ media:2, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Huimilpan: 6 incidentes en el mes, 
+ media:1, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en El Marques: 22 incidentes en el mes, 
+ media:18, meta:13" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Pedro Escobedo: 8 incidentes en el mes, 
+ media:4, meta:3" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Queretaro: 116 incidentes en el mes, 
+ media:89, meta:67" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en San Juan Del Rio: 34 incidentes en el mes, 
+ media:20, meta:15" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Tequisquiapan: 4 incidentes en el mes, 
+ media:2, meta:1" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr><tr><td class="parrilla_estado"><a href="../Semaforo/Wrapper?id_indicador=9&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="VIOLENCIA FAMILIAR en Queretaro: 261 incidentes en el mes, 
+ media:171, meta:128" src="../Content/ImagesApp/Semaforos/semaforo-rojo-opcion-8.png" alt="R"></a></td></tr></tbody></table></td><td class="parrilla-indicadores"><table><tbody><tr><td><img class="parrilla_titulo_indicador" src="../Content/ImagesApp/Indicadores/c-indicador-11.png" alt="11"></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22001&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Amealco De Bonfil: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22004&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Cadereyta De Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22005&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Colon: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22006&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Corregidora: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22007&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Ezequiel Montes: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22008&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Huimilpan: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22011&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en El Marques: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22012&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Pedro Escobedo: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22014&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Queretaro: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22016&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en San Juan Del Rio: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=22017&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Tequisquiapan: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr><tr><td class="parrilla_estado"><a href="../Semaforo/Wrapper?id_indicador=11&amp;id_mpo=0&amp;anio=2020&amp;mes=6&amp;accion=Incidencia&amp;controlador=Semaforo"><img class="ancho_elemento_parrilla" title="FEMINICIDIO en Queretaro: 0 incidentes en el mes, 
+ media:0, meta:0" src="../Content/ImagesApp/Semaforos/semaforo-verde-opcion-8.png" alt="V"></a></td></tr></tbody></table></td></table>
+                </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+
+                </div>
+                
+
+
+
+                
+            </div>
+            <!-- END PAGE CONTAINER-->
+        </div>
+        <!-- END PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="footer hidden-phone">
+        <div class="footer-inner" style="padding-top:5px">
+            2014 © RRS &amp; Asociados S.C.&nbsp;&nbsp; <span id="fechaActualizacion" class="label">Actualizado al 12/1/2017 12:00:00 PM</span>
+        </div>
+
+        <div class="footer-tools " style="display: none;">
+
+            <span style="margin-top: -7px"><select id="seleccion_municipio" class="medium m-wrap tooltips no-tooltip-on-touch-device responsive" data-original-title="" title=""></select></span>&nbsp;&nbsp;
+            <span style="margin-top: -7px"><select id="seleccion_indicador" class="medium m-wrap tooltips no-tooltip-on-touch-device responsive" data-original-title="" title=""></select></span>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE PLUGINS -->
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <script src="http://queretaro.semaforo.com.mx/js/jquery-migrate?v=4SK3pCnxuk7CNWBoqCkC3r83j1q4B3Ydp2HDAs-VSKE1"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/unobtrusive?v="></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/bootstrap?v=XDWh8ib09ONp0QXzxy1fAaOSIrDkkQj1cb8engxwMcY1"></script>
+
+
+
+    <!-- ie8 fixes -->
+    <!--[if lt IE 9]>
+    <script src="/js/excanvas"></script>
+    <script src="/js/respond"></script>
+    <![endif]-->
+    <script src="http://queretaro.semaforo.com.mx/js/Base-UI?v=C2zMpC5ghXPgGzAlkHhqln_Cxk65QZeUazOKW13_vXk1"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/scratchLibs?v=Gx5_LeuVY9NRrc6XhdR7E_Iuo68kO8IalMb2Hj05Km01"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/select2?v=Ma0_InolLfPrLosb4DvucscODyAcA9K8IjU1RRr9i7k1"></script>
+
+    <script src="http://queretaro.semaforo.com.mx/js/base-semaforo?v=qMllspT7ORIHLD2QtFJSsM-61WEqqxYbxNPysIyFRCc1"></script>
+
+    
+      <script src="http://queretaro.semaforo.com.mx/js/sfes-inicio?v=FmWyGPk0x_AKbtEdixE2KzTPkKcInQMWWzqkULNksiE1"></script>
+
+
+
+
+    <!-- END JAVASCRIPTS -->
+
+
+<!-- END BODY -->
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.3c5aa8e2a38bbbee4b6d88e6846fc657.html?origin=http%3A%2F%2Fqueretaro.semaforo.com.mx" title="Twitter settings iframe" style="display: none;"></iframe></body></html>
+
+
+<script>
+(function(n) {
+    n.fn.test = function(t) {
+        var f = {
+            anio: 0,
+            mes: 0,
+            idSlxAnio: "idSlxAnio",
+            idSlxMes: "idSlxMes",
+            id_semaforo: 1,
+            fnOnChange: function() {}
+        }
+          , t = n.extend(f, t)
+          , e = function() {
+            n.ajax({
+                data: '{"id_semaforo":"' + t.id_semaforo + '"}',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                type: "POST",
+                url: "../Plugins/AjaxAnios",
+                success: function(i) {
+                    n("#" + t.idSlxAnio).empty(),
+                    n.each(i, function(i, r) {
+                        var u = "";
+                        u = t.anio == 0 ? r.es_defacto == 1 ? "selected" : "" : r.anio == t.anio ? "selected" : "",
+                        n("#" + t.idSlxAnio).append("<option value='" + r.anio + "'" + u + ">" + r.anio + "<\/option>")
+                    }),
+                    n("#" + t.idSlxAnio).trigger("change")
+                }
+            })
+        }
+          , o = function() {
+            n.ajax({
+                data: '{"id_semaforo":"' + t.id_semaforo + '","anio":"' + n("#" + t.idSlxAnio).val() + '"}',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                type: "POST",
+                url: "../Plugins/AjaxMeses",
+                success: function(i) {
+                    n("#" + t.idSlxMes).empty(),
+                    n.each(i, function(i, r) {
+                        var u = "";
+                        u = t.anio == 0 ? r.es_defacto == 1 ? "selected" : "" : r.mes == t.mes ? "selected" : "",
+                        n("#" + t.idSlxMes).append("<option value='" + r.mes + "' " + u + ">" + r.mes_nombre + "<\/option>")
+                    }),
+                    n("#" + t.idSlxMes).trigger("change")
+                }
+            })
+        }
+          , i = function() {
+            return n("#" + t.idSlxAnio).val()
+        }
+          , r = function() {
+            return n("#" + t.idSlxMes).val()
+        }
+          , u = function() {
+            return n("#" + t.idSlxMes + " :selected").text()
+        };
+        return this.fnObtAnio = function() {
+            return i()
+        }
+        ,
+        this.fnObtMes = function() {
+            return r()
+        }
+        ,
+        this.fnObtMesNombre = function() {
+            return u()
+        }
+        ,
+        this.each(function() {
+            var f = n(this);
+            f.append('<select id="' + t.idSlxMes + '" style="margin-top:4px;margin-left: 5px" class="small m-wrap tooltips no-tooltip-on-touch-device responsive" tabindex="1"><\/select>'),
+            f.append('<select id="' + t.idSlxAnio + '" style="margin-top:4px;margin-left: 5px" class="small m-wrap tooltips no-tooltip-on-touch-device responsive" tabindex="1"><\/select>'),
+            e();
+            n("#" + t.idSlxAnio).on("change", function() {
+                o(),
+                t.fnOnChange(i(), r(), u())
+            });
+            n("#" + t.idSlxMes).on("change", function() {
+                t.fnOnChange(i(), r(), u())
+            });
+            return f
+        })
+    }
+}
+</script>

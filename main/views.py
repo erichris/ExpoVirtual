@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login, logout
 from .models import PlatformUser, Expo, Contact
 import datetime
 from django.conf import settings
+
+
+
 @csrf_exempt
 # Create your views here.
 def home(request):
@@ -36,9 +39,9 @@ def login(request):
 				if platformUser.user_type == "ADM":
 					return redirect('admin/')
 				elif platformUser.user_type == "STF":
-					return redirect('Staff/CreateExpo')
+					return redirect('Staff/SelectExpo')
 				elif platformUser.user_type == "EXO":
-					return redirect('admin/')
+					return redirect('ExpoOwner/SelectExpo')
 				elif platformUser.user_type == "STO":
 					return redirect('admin/')
 	return render(request, "Login.html")
@@ -72,6 +75,13 @@ def selectExpo(request):
 	return TemplateResponse(request, "SelectExpo.html", args)
 
 @csrf_exempt
+def selectExpoOwner(request):
+	args = {}
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
+	return TemplateResponse(request, "SelectExpoOwner.html", args)
+
+@csrf_exempt
 def editExpo(request, expo_name):
 	args = {}
 	args['expo'] = Expo.objects.get(nombre=expo_name)
@@ -80,3 +90,25 @@ def editExpo(request, expo_name):
 	args['expo'].hora_inicio = str(args['expo'].hora_inicio)
 	args['expo'].hora_final = str(args['expo'].hora_final)
 	return TemplateResponse(request, "EditExpo.html", args)
+
+@csrf_exempt
+def editExpoOwner(request, expo_name):
+	args = {}
+	args['expo'] = Expo.objects.get(nombre=expo_name)
+	args['expo'].fecha_final = str(args['expo'].fecha_final)
+	args['expo'].fecha_inicio = str(args['expo'].fecha_inicio)
+	args['expo'].hora_inicio = str(args['expo'].hora_inicio)
+	args['expo'].hora_final = str(args['expo'].hora_final)
+	return TemplateResponse(request, "EditExpoOwner.html", args)
+
+
+def editExpoLayout(request):
+	args = {}
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
+	return TemplateResponse(request, "SelectExpoOwner.html", args)
+
+@csrf_exempt
+# Create your views here.
+def test(request):
+	return render(request, "test.html")

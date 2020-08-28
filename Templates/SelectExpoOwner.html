@@ -10,16 +10,13 @@
 
 {% block body1 %}
 
-	Crea o edita una expo:
+	Selecciona la Expo que deseas editar:
 	<div class="expos row">
 		{% for expo in expos %}
 			<div class="col-sm-2">
 				<button class="ExpoElementlement" onclick="window.location = 'EditExpo/{{ expo.nombre }}' ;">{{ expo.nombre }}</button>
 			</div>
 		{% endfor %}
-		<div class="col-sm-2">
-			<button class="ExpoElementlement" onclick="window.location = '{{ url_new_expo }}' ;">Crear nueva expo</button>
-		</div>
 	</div>
 
 	
