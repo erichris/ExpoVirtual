@@ -22,7 +22,6 @@
             <form class="ContactForm" method="POST" id="Contact">
             {% csrf_token %}
                 <div class="row" style="height:8vw;">
-                    <input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="Contact">
                     <div class="col-sm-12 ContactTitle">
                             ¡Contáctanos y obtén una demostración!
                     </div>
@@ -33,13 +32,15 @@
                         
                     </div>
                     <div class="col-sm-4">
-                        <input class="InputText ContactFormElement" type="text" id="nombreForm" name="nombreForm" placeholder="Nombre..." >
+                        <!--input class="InputText ContactFormElement" type="text" id="nombreForm" name="nombreForm" placeholder="Nombre..." -->
+                        {{ form.nombre }}
                     </div>
                     <div class="col-sm-1">
                         
                     </div>
                     <div class="col-sm-4">
-                        <input class="InputText ContactFormElement" type="text" id="correoForm" name="correoForm" placeholder="Correo..." >
+                        <!--input class="InputText ContactFormElement" type="text" id="correoForm" name="correoForm" placeholder="Correo..." -->
+                        {{ form.email }}
                     </div>
                 </div>
 
@@ -48,16 +49,18 @@
                         
                     </div>
                     <div class="col-sm-4">
-                        <input class="InputText ContactFormElement" type="text" id="telefonoForm" name="telefonoForm" placeholder="Telefono..." >
+                        <!--input class="InputText ContactFormElement" type="text" id="telefonoForm" name="telefonoForm" placeholder="Telefono..." -->
+                        {{ form.telefono }}
                     </div>
                     <div class="col-sm-1">
                         
                     </div>
                     <div class="col-sm-4">
-                        <select id="cars" class="ContactFormElement" name="interes">
+                        <!--select id="cars" class="ContactFormElement" name="interes">
                             <option value="Eventos" selected="">Eventos</option>
                             <option value="Paquetes y precios">Paquetes y precios</option>
-                        </select>
+                        </select-->
+                        {{ form.interes }}
                     </div>
                 </div>
 
@@ -66,7 +69,8 @@
                         
                     </div>
                     <div class="col-sm-4">
-                        <textarea  class="InputText ContactTextArea" id="mensajeForm" name="mensajeForm" placeholder="Mensaje..." rows="5" cols="30"></textarea>
+                        <!--textarea  class="InputText ContactTextArea" id="mensajeForm" name="mensajeForm" placeholder="Mensaje..." rows="5" cols="30"></textarea-->
+                        {{ form.mensaje }}
                     </div>
                     
                 </div>

@@ -43,6 +43,9 @@ class ExpoDesign(models.Model):
 		pass
 
 class VisitantRegister(models.Model):
+	name = models.CharField(max_length=80, null=True, blank=True)
+	tel = models.CharField(max_length=80, null=True, blank=True)
+	mail = models.CharField(max_length=80, null=True, blank=True)
 	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE)
 
 class Stand(models.Model):
@@ -68,6 +71,9 @@ class Stand(models.Model):
         choices=PackageStand.choices,
         default=PackageStand.BASIC
         )
+	standType = models.IntegerField(default=0)
+	color1 = models.CharField(max_length=50, null=True, blank=True)
+	color2 = models.CharField(max_length=50, null=True, blank=True)
 
 class StandDesign(models.Model):
 	related_stand = models.ForeignKey(Stand, on_delete=models.CASCADE)
@@ -99,8 +105,9 @@ class PlatformUser(models.Model):
 
 	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 	name = models.CharField(default="default", max_length=40, null=True, blank=True)
-	user_expo = models.ManyToManyField(Expo, null=True, blank=True)
-	user_stand = models.ManyToManyField(Stand, null=True, blank=True)
+	first_login = models.BooleanField(default=True)
+	user_expo = models.ManyToManyField(Expo, blank=True)
+	user_stand = models.ManyToManyField(Stand, blank=True)
 	user_type = models.CharField(
         max_length=3,
         choices=UserType.choices,
@@ -114,7 +121,8 @@ class Chat(models.Model):
 	message = models.TextField(default="default")
 
 class Feedback(models.Model):
-	sender = models.ForeignKey(Expo, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
+	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
+	sender = models.ForeignKey(VisitantRegister, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
 	message = models.TextField(default="default")
 
 class Contact(models.Model):

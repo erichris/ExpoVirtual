@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Expositor - Select stand
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+	Edita un stand:
+	<div class="expos row">
+		{% for stand in stands %}
+			<div class="col-sm-2">
+				<button class="ExpoElementlement" onclick="window.location = 'EditStand/{{ stand.id }}' ;">{{ stand.nombre }}</button>
+			</div>
+		{% endfor %}
+	</div>
+
+	
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

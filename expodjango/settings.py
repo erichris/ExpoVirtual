@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
     
     'default': {
       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-      'NAME': 'nredd_expoVirtual',
+      'NAME': 'nredd_ExpoVirtual',
       'USER': 'nredd_cris',
       'PASSWORD': '$Nreddmx20',
       'HOST': '192.64.81.122',
@@ -159,3 +160,6 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 LOGOUT_REDIRECT_URL = '/'
 
 SITE_URL = '127.0.0.1/8000'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

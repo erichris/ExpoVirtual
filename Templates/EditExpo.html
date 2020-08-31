@@ -13,49 +13,25 @@
 
 	<div id="EditExpoBox" class="col-sm-6">
         <p class="" id="">Editar Expo</p>
-        <form method="POST">
+        <form method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         	<div id="EditExpoForm">
-	        	<input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="EditExpo">
-	            
-	            <input class="InputText" type="text" id="nombreExpo" name="nombreExpo" placeholder="Nombre de la Expo" autocomplete="off" value= {{ expo.nombre }}><br>
-	            
-	            <label for="numeroStands">Selecciona el numero de stands:</label><br>
-	            <select id="numeroStands" name="numeroStands">
-	            	<option value="{{ expo.stands_amount }}">{{ expo.stands_amount }}</option>
-				    <option value="40">40</option>
-				    <option value="80">80</option>
-				    <option value="120">120</option>
-				</select><br>
+        		{{ form.as_p }}
 				
-				<label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
+				<!--label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
 	            <input type="datetime-local" id="start"
 			       name="HoraInicio" value="{{ expo.fecha_inicio }}T{{ expo.hora_inicio }}"><br>
 			    
 			    <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
 			    <input type="datetime-local" id="end"
-			       name="HoraFin" value="{{ expo.fecha_final }}T{{ expo.hora_final }}"><br>
-
-			    <label for="myfile">Seleciona el BannerA para el hall principal:</label><br>
-  				<input type="file" id="BannerA" name="BannerA"><br>
-
-  				<label for="myfile">Seleciona el BannerB para el hall principal:</label><br>
-  				<input type="file" id="BannerB" name="BannerB"><br>
-
-  				<label for="myfile">Seleciona el video principal del Hall:</label><br>
-  				<input type="file" id="VideoHall" name="VideoHall"><br>
-
-  				<label for="myfile">Seleciona el triptico de informacion:</label><br>
-  				<input type="file" id="Triptico" name="Triptico"><br>
-
-  				<label for="myfile">Sube una imagen con tu calendario:</label><br>
-  				<input type="file" id="Calendario" name="Calendario"><br>
+			       name="HoraFin" value="{{ expo.fecha_final }}T{{ expo.hora_final }}"><br-->
 
 	            <button type="submit">GUARDAR CAMBIOS</button>
-
             </div>
 		</form>
 	</div>
+
+	<!--a href="CreateOwnerUser">Crear cuenta Owner para esta expo</a-->
 
 
 	

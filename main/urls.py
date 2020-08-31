@@ -1,22 +1,26 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .views import home, login, createExpo, selectExpo, editExpo, editExpoOwner, selectExpoOwner, editExpoLayout, test;
+from .views import home, login, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor
 
 urlpatterns = [
     path('', home, name = "home"),
     path('Login', login, name = "LoginStaff"),
-    path('Staff/CreateExpo', createExpo, name = "CreateExpo"),
-    path('Staff/SelectExpo', selectExpo, name = "SelectExpo"),
-    path('Staff/AssignRoles', home, name = "CreateExpo"),
-    path('Staff/EditExpo/<str:expo_name>', editExpo, name = "EditExpo"),
+    path('Staff/CreateExpo', createExpoStaff, name = "CreateExpo"),
+    path('Staff/SelectExpo', selectExpoStaff, name = "SelectExpo"),
+    path('Staff/EditExpo/<str:expo_name>/CreateOwnerUser', CreateOwnerUser, name = "CreateExpo"),
+    path('Staff/EditExpo/<str:expo_name>', editExpoStaff, name = "EditExpo"),
     path('ExpoOwner/SelectExpo', selectExpoOwner, name = "SelectExpo"),
     path('ExpoOwner/Layout', home, name = "CreateExpo"),
     path('ExpoOwner/CreateExpositor', home, name = "CreateExpo"),
     path('ExpoOwner/EditExpo/layout', editExpoLayout, name = "EditExpo"),
     path('ExpoOwner/EditExpo/<str:expo_name>', editExpoOwner, name = "EditExpo"),
 
-    path('Expositor/SelectStand', home, name = "CreateExpo"),
-    path('Expositor/EditStand', home, name = "CreateExpo"),
+    path('Expositor/SelectStand', selectStandExpositor, name = "SelectStand"),
+    path('Expositor/EditStand/<str:id_stand>', editStandExpositor, name = "EditStand"),
     path('test', test, name = "test"),
+
+
+
+    path('App/<str:action>', appController, name = "appController"),
 ]
