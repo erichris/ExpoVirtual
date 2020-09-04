@@ -13,7 +13,7 @@ def layout(request, expo_name):
 	selected_expo = Expo.objects.get(nombre=expo_name)
 	args = {}
 	args['expo'] = selected_expo
-	return TemplateResponse(request, "ExpoGL.html", args)
+	return TemplateResponse(request, "layoutGL.html", args)
 
 @csrf_exempt
 # Create your views here.
