@@ -8,6 +8,13 @@ from django.conf import settings
 from .forms import ContactForm, EditExpoStaffForm, EditExpoOwnerForm, EditStandExpositorForm
 from django.http import JsonResponse
 
+@csrf
+def layout(request, expo_name):
+	selected_expo = Expo.objects.get(nombre=expo_name)
+	args = {}
+	args['expo'] = selected_expo
+	return TemplateResponse(request, "ExpoGL.html", args)
+
 @csrf_exempt
 # Create your views here.
 def home(request):

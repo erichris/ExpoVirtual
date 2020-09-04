@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .views import home, login, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor, expoGL
+from .views import home, login, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor, expoGL, layout
 
 urlpatterns = [
     path('', home, name = "home"),
@@ -11,7 +11,7 @@ urlpatterns = [
     path('Staff/EditExpo/<str:expo_name>/CreateOwnerUser', CreateOwnerUser, name = "CreateExpo"),
     path('Staff/EditExpo/<str:expo_name>', editExpoStaff, name = "EditExpo"),
     path('ExpoOwner/SelectExpo', selectExpoOwner, name = "SelectExpo"),
-    path('ExpoOwner/Layout', home, name = "CreateExpo"),
+    path('ExpoOwner/Layout/<str:expo_name>', layout, name = "CreateExpo"),
     path('ExpoOwner/CreateExpositor', home, name = "CreateExpo"),
     path('ExpoOwner/EditExpo/layout', editExpoLayout, name = "EditExpo"),
     path('ExpoOwner/EditExpo/<str:expo_name>', editExpoOwner, name = "EditExpo"),
