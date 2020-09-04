@@ -1,0 +1,13 @@
+{% load static %}
+
+
+<img src="{% static "images/fondo2.jpg"%}" style="position:absolute; width: 100vw;z-index: -1000; top:-37vw;">
+<div class="container-fluid" id="QuizID" style="height: 50.5vw;">
+    <div class="row" style="height: 50.5vw; background: url( {{ bannerWebpage }} ); background-repeat: no-repeat;background-size:cover;background-position: right top;">
+    	<div class="col-12">
+    		<div id="PortadaMoreInfo" style="position:relative; top:40vw;">
+                <a class="nav-link navMenu center" href="/expo/{{ expo.nombre }}">Entrar a la Expo</a>
+    		</div>
+    	</div>
+    </div>
+</div>

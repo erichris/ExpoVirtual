@@ -1,0 +1,71 @@
+{% load static %}
+<div style="height:240vw;">
+	<div class="row" style="height: 50vw; position: relative;">
+		<div class="col-12 " style="height: 10vw;">
+			<p class="center" style="text-align: center; position:relative; top: 3vw;font-size: 3vw;"> Galeria del evento</p>
+			
+		</div>
+		{% for patrocinador in Carrusel %}
+	    <div class="col-4 ">
+	    	<img class="center" src="{{ patrocinador }}" alt="First slide" style="width:30vw; height:40vw">
+	    </div>
+	    {% endfor %}
+	    <div class="col-12 " style="height: 0vw;">
+	    	<div>
+	            <img id="ArrowI" class="" src="{% static "images/flechaizquierda.png"%}" onclick="switchPanel();" style="position: absolute;top: -20vw;right: 96vw;width: 2vw;height: 4vw;">
+	        </div>
+	        <div>
+	            <img id="ArrowD" class="" src="{% static "images/flechaderecha.png"%}" onclick="switchPanel();" style="position: absolute;top: -20vw;right: 4vw;width: 2vw;height: 4vw;">
+	        </div>
+	    </div>
+	    <div class="col-12 " style="height: 10vw;">
+			<p class="center" style="text-align: center; position:relative; top: 3vw;font-size: 3vw;"> Patrocinadores</p>
+			
+		</div>
+		<div class="col-12 " style="height: 10vw;background-color: white;">
+			<div class="row" style="height: 10vw; position: relative;">
+			{% for patrocinador in Patrocinador %}
+					<div class="col-3">
+						<img class="" src="{{ patrocinador }}" alt="First slide" style="height:6vw; width: 25vw;position:relative; top:2vw;">
+					</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="width: 100vw; height: 40vw; background: url( '{% static "images/redesBack.jpg" %}' ); background-repeat: no-repeat;background-size:cover;background-position: right top; position: relative; top: 30vw;">
+			<div class="col-7">
+				<p class="" style="text-align: left; position:relative; top: 3vw;font-size: 2.5vw; color: white; margin: 10vw 5vw;"> ¡Síguenos en nuestras redes sociales <br>para mantenerte actualizado con más<br> información!</p>
+			</div>
+			<div class="col-5" >
+				<div class="row" style="position:relative; top:17vw;">
+					<div class="col-1">
+					</div>
+					<div class="col-2">
+						<img class="center" onclick="openURL('{{expo.facebook}}')" src="{% static "images/facebook.png" %}" alt="First slide" style="height:6vw; width: 6vw;">
+					</div>
+					<div class="col-1">
+					</div>
+					<div class="col-2">
+						<img class="center" onclick="openURL('{{expo.instagram}}')" src="{% static "images/instagram.png" %}" alt="First slide" style="height:6vw; width: 6vw;">
+					</div>
+					<div class="col-1">
+					</div>
+					<div class="col-2">
+						<img class="center" onclick="openURL('{{expo.youtube}}')" src="{% static "images/youtube.png" %}" alt="First slide" style="height:6vw; width: 6vw;">
+					</div>
+					
+					
+					
+				</div>
+			</div>
+
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	function openURL(url){
+		window.open(url);
+	}
+</script>

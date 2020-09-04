@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Tu Expo Virtual
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block scripts %} 
+	<script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", '{% static "Build_Expo/expo_webgl.json" %}', {onProgress: UnityProgress});
+    </script>
+{% endblock %}
+
+{% block body1 %}
+	<div id="unityContainer" class="center" style="width: 1920px; height: 980px;"></div>
+{% endblock %}
+

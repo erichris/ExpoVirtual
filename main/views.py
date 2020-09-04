@@ -125,7 +125,8 @@ def editStandExpositor(request, id_stand):
 			selected_stand.chat = temp_stand.chat;
 			selected_stand.whatsapp = temp_stand.whatsapp;
 			selected_stand.webpage = temp_stand.webpage;
-			selected_stand.flyer_file = temp_stand.flyer_file;
+			if 'flyer_file' in request.FILES.keys():
+				selected_stand.flyer_file = request.FILES['flyer_file'];
 			if 'logotipo' in request.FILES.keys():
 				selected_stand.logotipo = request.FILES['logotipo'];
 			if 'video_bienvenida' in request.FILES.keys():
@@ -134,6 +135,10 @@ def editStandExpositor(request, id_stand):
 				selected_stand.flyer_file = request.FILES['flyer_file'];
 			if 'exhibition_video' in request.FILES.keys():
 				selected_stand.exhibition_video = request.FILES['exhibition_video'];
+			if 'banner1' in request.FILES.keys():
+				selected_stand.banner1 = request.FILES['banner1'];
+			if 'banner2' in request.FILES.keys():
+				selected_stand.banner2 = request.FILES['banner2'];
 			selected_stand.save();
 			return redirect('/Expositor/EditStand/' + str(selected_stand.id));
 	
@@ -217,26 +222,79 @@ def editExpoLayout(request):
 
 @csrf_exempt
 # Create your views here.
-def test(request):
-	return render(request, "test.html")
+def test(request, expo_name):
+	selected_expo = Expo.objects.get(nombre=expo_name)
+	args = {}
+	args['expo'] = selected_expo
+	args['bannerWebpage'] =  selected_expo.bannerWebpage.url
+	args['Carrusel'] = []
+	if(selected_expo.Carrusel1 != ""):
+		args['Carrusel'].append(selected_expo.Carrusel1.url)
+	if(selected_expo.Carrusel2 != ""):
+		args['Carrusel'].append(selected_expo.Carrusel2.url)
+	if(selected_expo.Carrusel3 != ""):
+		args['Carrusel'].append(selected_expo.Carrusel3.url)
+	if(selected_expo.Carrusel4 != ""):
+		args['Carrusel'].append(selected_expo.Carrusel4.url)
+	if(selected_expo.Carrusel5 != ""):
+		args['Carrusel'].append(selected_expo.Carrusel5.url)
 
+	args['Patrocinador'] = []
+	if(selected_expo.Patrocinador1 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador1.url)
+	if(selected_expo.Patrocinador2 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador2.url)
+	if(selected_expo.Patrocinador3 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador3.url)
+	if(selected_expo.Patrocinador4 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador4.url)
+	if(selected_expo.Patrocinador5 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador5.url)
+	if(selected_expo.Patrocinador6 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador6.url)
+	if(selected_expo.Patrocinador7 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador7.url)
+	if(selected_expo.Patrocinador8 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador8.url)
+	if(selected_expo.Patrocinador9 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador9.url)
+	if(selected_expo.Patrocinador10 != ""):
+		args['Patrocinador'].append(selected_expo.Patrocinador10.url)
+	
+	form = ContactForm()
+	args['form'] = form;
+	print(args['Patrocinador'])
+	return TemplateResponse(request, "Expo.html", args)
+
+
+def expoGL(request, expo_name):
+	selected_expo = Expo.objects.get(nombre=expo_name)
+	args = {}
+	args['expo'] = selected_expo
+	return TemplateResponse(request, "ExpoGL.html", args)
 
 @csrf_exempt
 def appController(request, action):
+	print("App request")
 	if request.POST:
 		args = {}
 		if action == "GetExpo":
 			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
 			args['NAME'] = selected_expo.nombre
-			args['BANNER_A'] = selected_expo.bannerA.url
-			args['BANNER_B'] = selected_expo.bannerB.url
-			args['TRIPTICO1'] = selected_expo.TripticoPage1.url
-			args['CALENDARIO'] = selected_expo.Calendario.url
-			args['VIDEO'] = selected_expo.video.url
+			if selected_expo.bannerA != "":
+				args['BANNER_A'] = selected_expo.bannerA.url
+			if selected_expo.bannerB != "":
+				args['BANNER_B'] = selected_expo.bannerB.url
+			if selected_expo.TripticoPage1 != "":
+				args['TRIPTICO1'] = selected_expo.TripticoPage1.url
+			if selected_expo.Calendario != "":
+				args['CALENDARIO'] = selected_expo.Calendario.url
+			if selected_expo.video != "":
+				args['VIDEO'] = selected_expo.video.url
 			args['HALL1'] = selected_expo.Hall1
 			args['HALL2'] = selected_expo.Hall2
 			args['STATUS'] = 0
-			return JsonResponse(args, safe=False);
+
 		if action == "Register":
 			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
 			visitant = VisitantRegister()
@@ -247,5 +305,78 @@ def appController(request, action):
 			visitant.save()
 			args['STATUS'] = 0
 			args['VISITANT_ID'] = visitant.id
-			return JsonResponse(args, safe=False);
+
+		if action == "GetStand":
+			selected_stand = Stand.objects.get(editKey=request.POST['SECRET_KEY'])
+			args['ID'] = selected_stand.id
+			args['COLOR1'] = selected_stand.color1
+			args['COLOR2'] = selected_stand.color2
+			args['LOGO'] = selected_stand.logotipo.url
+			args['STAND_TYPE'] = selected_stand.standType
+			args['WHATSAPP'] = selected_stand.whatsapp
+			args['WEBPAGE'] = selected_stand.webpage
+			args['POSITION'] = selected_stand.position
+			if selected_stand.exhibition_video != "":
+				args['EXHIBITION_VIDEO'] = selected_stand.exhibition_video.url
+			if selected_stand.video_bienvenida != "":
+				args['VIDEO_BIENVENIDA'] = selected_stand.video_bienvenida.url
+			if selected_stand.flyer_file != "":
+				args['FLYER'] = selected_stand.flyer_file.url
+			if selected_stand.banner1 != "":
+				args['BANNER1'] = selected_stand.banner1.url
+			if selected_stand.banner2 != "":
+				args['BANNER2'] = selected_stand.banner2.url
+			args['STATUS'] = 0
+
+		if action == "GetStands":
+			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
+			selected_stands = Stand.objects.filter(related_expo=selected_expo)
+			args["STANDS"] = {}
+
+			cont = 0
+			for selected_stand in selected_stands:
+				args["STANDS"][selected_stand.id] = {}
+				args["STANDS"][selected_stand.id] ['ID'] = selected_stand.id
+				args["STANDS"][selected_stand.id] ['COLOR1'] = selected_stand.color1
+				args["STANDS"][selected_stand.id] ['COLOR2'] = selected_stand.color2
+				args["STANDS"][selected_stand.id] ['STAND_TYPE'] = selected_stand.standType
+				args["STANDS"][selected_stand.id] ['WHATSAPP'] = selected_stand.whatsapp
+				args["STANDS"][selected_stand.id] ['WEBPAGE'] = selected_stand.webpage
+				args["STANDS"][selected_stand.id] ['POSITION'] = selected_stand.position
+				if selected_stand.logotipo != "":
+					args["STANDS"][selected_stand.id] ['LOGO'] = selected_stand.logotipo.url
+				if selected_stand.exhibition_video != "":
+					args["STANDS"][selected_stand.id] ['EXHIBITION_VIDEO'] = selected_stand.exhibition_video.url
+				if selected_stand.video_bienvenida != "":
+					args["STANDS"][selected_stand.id] ['VIDEO_BIENVENIDA'] = selected_stand.video_bienvenida.url
+				if selected_stand.flyer_file != "":
+					args["STANDS"][selected_stand.id] ['FLYER'] = selected_stand.flyer_file.url
+				if selected_stand.banner1 != "":
+					args["STANDS"][selected_stand.id] ['BANNER1'] = selected_stand.banner1.url
+				if selected_stand.banner2 != "":
+					args["STANDS"][selected_stand.id] ['BANNER2'] = selected_stand.banner2.url
+			args['STATUS'] = 0
+
+		if action == "UploadDistribution":
+			print("UploadDistribution")
+			acomodo = request.POST['ACOMODO']
+			standsCode = acomodo.split("|")
+			for stand in standsCode:
+				if stand == "":
+					continue
+				stand_id = stand.split(":")[1]
+				selected_stand = Stand.objects.get(id=stand_id)
+				selected_stand.position = stand
+				selected_stand.save()
+			args['STATUS'] = 0
+
+		if action == "GetDistribution":
+			print("GetDistribution")
+			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
+			args['HALL1'] = selected_expo.Hall1 
+			args['HALL2'] = selected_expo.Hall2 
+			args['STATUS'] = 0
+
+			
+		return JsonResponse(args, safe=False);
 

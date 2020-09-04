@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Tu Expo Virtual
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block scripts %} 
+	<script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", '{% static "Build/WebGL-Expo.json" %}', {onProgress: UnityProgress});
+    </script>
+{% endblock %}
+
+{% block body1 %}
+	{% include 'blockBannerPrincipal.html' %}	
+{% endblock %}
+
+{% block body2 %}
+	{% include 'galeriaBlock.html' %}	
+{% endblock %}
+
+
+
+{% block body7 %}
+	{% include 'blockContacto.html' %}
+{% endblock %}
+
+{% block body8 %}
+	
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "ExpoHall",
+"productVersion": "0.1",
+"dataUrl": "expo_webgl.data.unityweb",
+"wasmCodeUrl": "expo_webgl.wasm.code.unityweb",
+"wasmFrameworkUrl": "expo_webgl.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.9f1"
+}

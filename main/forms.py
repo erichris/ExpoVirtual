@@ -49,6 +49,6 @@ class EditExpoOwnerForm(ModelForm):
 class EditStandExpositorForm(ModelForm):
 	class Meta:
 		model = Stand
-		fields = ('logotipo', 'video_bienvenida', 'whatsapp', 'chat', 'webpage', 'flyer_file', 'exhibition_video', 'color1', 'color2')
+		fields = ('banner1', 'banner2', 'logotipo', 'video_bienvenida', 'whatsapp', 'chat', 'webpage', 'flyer_file', 'exhibition_video', 'color1', 'color2')
 		widgets = {
 		}

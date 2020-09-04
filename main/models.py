@@ -29,6 +29,29 @@ class Expo(models.Model):
 	TripticoPage9 = models.FileField(null=True, blank=True)
 	TripticoPage10 = models.FileField(null=True, blank=True)
 	Calendario = models.FileField(null=True, blank=True)
+
+	bannerWebpage = models.FileField(null=True, blank=True)
+
+	Carrusel1 = models.FileField(null=True, blank=True)
+	Carrusel2 = models.FileField(null=True, blank=True)
+	Carrusel3 = models.FileField(null=True, blank=True)
+	Carrusel4 = models.FileField(null=True, blank=True)
+	Carrusel5 = models.FileField(null=True, blank=True)
+	Patrocinador1 = models.FileField(null=True, blank=True)
+	Patrocinador2 = models.FileField(null=True, blank=True)
+	Patrocinador3 = models.FileField(null=True, blank=True)
+	Patrocinador4 = models.FileField(null=True, blank=True)
+	Patrocinador5 = models.FileField(null=True, blank=True)
+	Patrocinador6 = models.FileField(null=True, blank=True)
+	Patrocinador7 = models.FileField(null=True, blank=True)
+	Patrocinador8 = models.FileField(null=True, blank=True)
+	Patrocinador9 = models.FileField(null=True, blank=True)
+	Patrocinador10 = models.FileField(null=True, blank=True)
+
+	facebook = models.CharField(max_length=80, null=True, blank=True)
+	instagram = models.CharField(max_length=80, null=True, blank=True)
+	youtube = models.CharField(max_length=80, null=True, blank=True)
+
 	editKey = models.CharField(default="default", max_length=40, null=True, blank=True)
 	Hall1 = models.TextField(default="default")
 	Hall2 = models.TextField(default="default")
@@ -58,6 +81,8 @@ class Stand(models.Model):
 	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE)
 	nombre = models.CharField(default="default", max_length=40, null=True, blank=True)
 	logotipo = models.FileField(null=True, blank=True)
+	banner1 = models.FileField(null=True, blank=True)
+	banner2 = models.FileField(null=True, blank=True)
 	video_bienvenida = models.FileField(null=True, blank=True)
 	whatsapp = models.CharField(max_length=80, null=True, blank=True)
 	chat = models.CharField(max_length=80, null=True, blank=True)
@@ -74,6 +99,7 @@ class Stand(models.Model):
 	standType = models.IntegerField(default=0)
 	color1 = models.CharField(max_length=50, null=True, blank=True)
 	color2 = models.CharField(max_length=50, null=True, blank=True)
+	position = models.CharField(max_length=50, null=True, blank=True)
 
 class StandDesign(models.Model):
 	related_stand = models.ForeignKey(Stand, on_delete=models.CASCADE)
