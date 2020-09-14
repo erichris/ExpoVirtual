@@ -519,23 +519,23 @@ def appController(request, action):
 					args["STANDS"][selected_stand.id] ['VIDEO_BIENVENIDA'] = selected_stand.video_bienvenida.url
 				if selected_stand.flyer_file != "":
 					args["STANDS"][selected_stand.id] ['FLYER'] = selected_stand.flyer_file.url
-				if selected_stand.banner1 != "":
+				if selected_stand.banner1 and hasattr(selected_stand.banner1, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER1'] = selected_stand.banner1.url
-				if selected_stand.banner2 != "":
+				if selected_stand.banner2 and hasattr(selected_stand.banner2, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER2'] = selected_stand.banner2.url
-				if selected_stand.banner3 != "":
+				if selected_stand.banner3 and hasattr(selected_stand.banner3, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER3'] = selected_stand.banner3.url
-				if selected_stand.banner4 != "":
+				if selected_stand.banner4 and hasattr(selected_stand.banner4, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER4'] = selected_stand.banner4.url
-				if selected_stand.banner5 != "":
+				if selected_stand.banner5 and hasattr(selected_stand.banner5, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER5'] = selected_stand.banner5.url
-				if selected_stand.banner6 != "":
+				if selected_stand.banner6 and hasattr(selected_stand.banner6, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER6'] = selected_stand.banner6.url
-				if selected_stand.banner_horizontal1 != "":
+				if selected_stand.banner_horizontal1 and hasattr(selected_stand.banner_horizontal1, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL1'] = selected_stand.banner_horizontal1.url
-				if selected_stand.banner_horizontal2 != "":
+				if selected_stand.banner_horizontal2 and hasattr(selected_stand.banner_horizontal2, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL2'] = selected_stand.banner_horizontal2.url
-				if selected_stand.banner_horizontal3 != "":
+				if selected_stand.banner_horizontal3 and hasattr(selected_stand.banner_horizontal3, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL3'] = selected_stand.banner_horizontal3.url
 			args['STATUS'] = 0
 
