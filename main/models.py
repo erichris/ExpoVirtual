@@ -56,6 +56,9 @@ class Expo(models.Model):
 	Hall1 = models.TextField(default="default")
 	Hall2 = models.TextField(default="default")
 
+	def __str__(self):
+		return self.nombre
+
 class ExpoDesign(models.Model):
 	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE)
 	class Meta:
@@ -63,7 +66,7 @@ class ExpoDesign(models.Model):
 		verbose_name_plural = "ExpoDesigns"
 	
 	def __str__(self):
-		pass
+		return self.related_expo.nombre
 
 class VisitantRegister(models.Model):
 	name = models.CharField(max_length=80, null=True, blank=True)
@@ -83,6 +86,13 @@ class Stand(models.Model):
 	logotipo = models.FileField(null=True, blank=True)
 	banner1 = models.FileField(null=True, blank=True)
 	banner2 = models.FileField(null=True, blank=True)
+	banner3 = models.FileField(null=True, blank=True)
+	banner4 = models.FileField(null=True, blank=True)
+	banner5 = models.FileField(null=True, blank=True)
+	banner6 = models.FileField(null=True, blank=True)
+	banner_horizontal1 = models.FileField(null=True, blank=True)
+	banner_horizontal2 = models.FileField(null=True, blank=True)
+	banner_horizontal3 = models.FileField(null=True, blank=True)
 	video_bienvenida = models.FileField(null=True, blank=True)
 	whatsapp = models.CharField(max_length=80, null=True, blank=True)
 	chat = models.CharField(max_length=80, null=True, blank=True)
@@ -100,6 +110,8 @@ class Stand(models.Model):
 	color1 = models.CharField(max_length=50, null=True, blank=True)
 	color2 = models.CharField(max_length=50, null=True, blank=True)
 	position = models.CharField(max_length=50, null=True, blank=True)
+	def __str__(self):
+		return self.nombre
 
 class StandDesign(models.Model):
 	related_stand = models.ForeignKey(Stand, on_delete=models.CASCADE)
@@ -129,6 +141,7 @@ class PlatformUser(models.Model):
 		STAFF = 'STF', _('Staff')
 		ADMIN = 'ADM', _('Administrador')
 
+
 	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 	name = models.CharField(default="default", max_length=40, null=True, blank=True)
 	first_login = models.BooleanField(default=True)
@@ -137,8 +150,12 @@ class PlatformUser(models.Model):
 	user_type = models.CharField(
         max_length=3,
         choices=UserType.choices,
-        default=UserType.VISITOR
-    )
+        default=UserType.VISITOR)
+	def __str__(self):
+		if self.user != None:
+			return self.user.username
+		return "No name";
+
 
 
 class Chat(models.Model):

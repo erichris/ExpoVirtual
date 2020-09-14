@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Staff - Staff Edit Expo
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+
+	<div id="EditExpoBox" class="col-sm-6">
+        <p class="" id="">Crear cuenta Owner Expo</p>
+        <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        	<div id="EditExpoForm">
+        		{{ form.as_p }}
+				
+				<!--label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
+	            <input type="datetime-local" id="start"
+			       name="HoraInicio" value="{{ expo.fecha_inicio }}T{{ expo.hora_inicio }}"><br>
+			    
+			    <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
+			    <input type="datetime-local" id="end"
+			       name="HoraFin" value="{{ expo.fecha_final }}T{{ expo.hora_final }}"><br-->
+
+	            <button type="submit">CREAR CUENTA</button>
+
+            </div>
+		</form>
+	</div>
+
+	<a href="../CreateOwnerUser">Crear cuenta Owner para esta expo</a>
+
+
+	
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

@@ -26,6 +26,17 @@
 {% endblock %}
 
 {% block body2 %}
+	Crea o edita un usuario con privilegios de Dueño de Expo:
+	<div class="expos row">
+		{% for owner in expo_owners %}
+			<div class="col-sm-2">
+				<button class="ExpoElementlement" onclick="window.location = 'EditExpoOwner/{{ owner.id }}' ;">{{ owner.user.username }}</button>
+			</div>
+		{% endfor %}
+		<div class="col-sm-2">
+			<button class="ExpoElementlement" onclick="window.location = 'CreateExpositor' ;">Crear nueva cuenta</button>
+		</div>
+	</div>
 {% endblock %}
 
 {% block body3 %}

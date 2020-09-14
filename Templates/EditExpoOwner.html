@@ -30,13 +30,24 @@
 
 
 
-	<a href="layout">Editar Expo</a>
+	<a href="layout">Editar Expo</a><br>
 
 
 	
 {% endblock %}
 
 {% block body2 %}
+Crea o edita un stand:
+    <div class="expos row">
+        {% for stand in stands %}
+            <div class="col-sm-2">
+                <button class="ExpoElementlement" onclick="window.location = '/ExpoOwner/StandEdit/{{ stand.id }}' ;">{{ stand.nombre }}</button>
+            </div>
+        {% endfor %}
+        <div class="col-sm-2">
+            <button class="ExpoElementlement" onclick="window.location = 'CreateStand/{{ expo.id }}' ;">Crear un nuevo stand</button>
+        </div>
+    </div>
 {% endblock %}
 
 {% block body3 %}

@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from .models import PlatformUser, Expo, Contact, VisitantRegister, Stand
 import datetime
 from django.conf import settings
-from .forms import ContactForm, EditExpoStaffForm, EditExpoOwnerForm, EditStandExpositorForm
+from .forms import ContactForm, EditExpoStaffForm, EditExpoOwnerForm, EditStandExpositorForm, CreateUserForm, EditPlatformUser, EditPlatformUser2, EditStandExpoOwnerForm
 from django.http import JsonResponse
+import random
 
 @csrf_exempt
 def layout(request, expo_name):
@@ -55,6 +57,10 @@ def login(request):
 					return redirect('Expositor/SelectStand')
 	return render(request, "Login.html")
 
+
+
+
+
 @csrf_exempt
 def createExpoStaff(request):
 	if request.POST:
@@ -76,6 +82,118 @@ def createExpoStaff(request):
 			return redirect('/Staff/SelectExpo');
 
 	return render(request, "CreateExpo.html")
+
+def createExpoOwner(request):
+	if request.POST:
+		form = CreateUserForm(request.POST)
+		if form.is_valid():
+			temp_user = User()
+			temp_user = form.save(commit=False)
+			temp_user.save()
+			temp_platform_user = PlatformUser()
+			temp_platform_user.user = temp_user;
+			temp_platform_user.user_type = "EXO"
+			temp_platform_user.save()
+			return redirect('/Staff/SelectExpo');
+	
+	form = CreateUserForm()
+	args = {}
+	args['form'] = form
+	return TemplateResponse(request, "CreateOwnerUser.html", args)
+
+def createStandOwner(request):
+	if request.POST:
+		form = CreateUserForm(request.POST)
+		if form.is_valid():
+			temp_user = User()
+			temp_user = form.save(commit=False)
+			temp_user.save()
+			temp_platform_user = PlatformUser()
+			temp_platform_user.user = temp_user;
+			temp_platform_user.user_type = "STO"
+			temp_platform_user.save()
+			return redirect('/ExpoOwner/SelectExpo');
+	
+	form = CreateUserForm()
+	args = {}
+	args['form'] = form
+	return TemplateResponse(request, "CreateOwnerUser.html", args)
+
+def editUserExpoOwner(request, id):
+	selected_user = PlatformUser.objects.get(id=id)
+	if request.POST:
+		form = EditPlatformUser(request.POST)
+		if form.is_valid():
+			selected_user.user_type = request.POST["user_type"];
+			selected_user.name = request.POST["name"];
+			expos = []
+			for expoID in request.POST.getlist("user_expo"):
+				expo = Expo.objects.get(id=expoID)
+				expos.append(expo)
+			selected_user.user_expo.set(expos);
+			selected_user.save();
+			
+			return redirect('/Staff/EditExpoOwner/' + str(selected_user.id));
+	args = {}
+	args['user'] = selected_user
+	form = EditPlatformUser(instance = selected_user)
+	args['form'] = form
+	return TemplateResponse(request, "EditPlatformUser.html", args)
+
+def editUserStandOwner(request, id):
+	selected_user = PlatformUser.objects.get(id=id)
+	if request.POST:
+		form = EditPlatformUser2(request.POST)
+		if form.is_valid():
+			selected_user.name = request.POST["name"];
+			stands = []
+			for standID in request.POST.getlist("user_stand"):
+				stand = Stand.objects.get(id=standID)
+				stands.append(stand)
+			selected_user.user_stand.set(stands);
+			selected_user.save();
+			
+			return redirect('/ExpoOwner/SelectExpo');
+	args = {}
+	args['user'] = selected_user
+	form = EditPlatformUser2(instance = selected_user)
+	args['form'] = form
+	return TemplateResponse(request, "EditPlatformUser.html", args)
+
+def editStandExpoOwner(request, id):
+	selected_stand = Stand.objects.get(id=id)
+	if request.POST:
+		form = EditStandExpoOwnerForm(request.POST)
+		if form.is_valid():
+			selected_stand.nombre = request.POST["nombre"];
+			selected_stand.packageStand = request.POST["packageStand"];
+			selected_stand.standType = request.POST["standType"];
+			selected_stand.save();
+			
+			return redirect('/ExpoOwner/SelectExpo');
+	args = {}
+	args['stand'] = selected_stand
+	form = EditStandExpoOwnerForm(instance = selected_stand)
+	args['form'] = form
+	return TemplateResponse(request, "EditStandExpoOwner.html", args)
+
+def createStandExpoOwner(request, id):
+	if request.POST:
+		form = EditStandExpoOwnerForm(request.POST)
+		if form.is_valid():
+			selected_stand = Stand()
+			selected_stand.related_expo = Expo.objects.get(id=id)
+			selected_stand.nombre = request.POST["nombre"];
+			selected_stand.packageStand = request.POST["packageStand"];
+			selected_stand.standType = request.POST["standType"];
+			selected_stand.editKey = str(id) + "-" + str(random.randint(0,10000000))
+			selected_stand.save();
+			
+			return redirect('/ExpoOwner/SelectExpo');
+	args = {}
+	form = EditStandExpoOwnerForm()
+	args['form'] = form
+	return TemplateResponse(request, "EditStandExpoOwner.html", args)
 
 @csrf_exempt
 def CreateOwnerUser(request):
@@ -103,6 +221,11 @@ def selectExpoStaff(request):
 	args = {}
 	args['expos'] = Expo.objects.all()
 	args['url_new_expo'] = "CreateExpo"
+
+	args['expo_owners'] = PlatformUser.objects.filter(user_type='EXO')
+
+
+
 	return TemplateResponse(request, "SelectExpo.html", args)
 
 @csrf_exempt
@@ -110,6 +233,11 @@ def selectExpoOwner(request):
 	args = {}
 	platformUser = PlatformUser.objects.get(user=request.user)
 	args['expos'] = platformUser.user_expo.all()
+
+	args['stands_owners'] = PlatformUser.objects.filter(user_type='STO')
+
+	
+
 	return TemplateResponse(request, "SelectExpoOwner.html", args)
 
 @csrf_exempt
@@ -146,6 +274,21 @@ def editStandExpositor(request, id_stand):
 				selected_stand.banner1 = request.FILES['banner1'];
 			if 'banner2' in request.FILES.keys():
 				selected_stand.banner2 = request.FILES['banner2'];
+			if 'banner3' in request.FILES.keys():
+				selected_stand.banner3 = request.FILES['banner3'];
+			if 'banner4' in request.FILES.keys():
+				selected_stand.banner4 = request.FILES['banner4'];
+			if 'banner5' in request.FILES.keys():
+				selected_stand.banner5 = request.FILES['banner5'];
+			if 'banner6' in request.FILES.keys():
+				selected_stand.banner6 = request.FILES['banner6'];
+
+			if 'banner_horizontal1' in request.FILES.keys():
+				selected_stand.banner_horizontal1 = request.FILES['banner_horizontal1'];
+			if 'banner_horizontal2' in request.FILES.keys():
+				selected_stand.banner_horizontal2 = request.FILES['banner_horizontal2'];
+			if 'banner_horizontal3' in request.FILES.keys():
+				selected_stand.banner_horizontal3 = request.FILES['banner_horizontal3'];
 			selected_stand.save();
 			return redirect('/Expositor/EditStand/' + str(selected_stand.id));
 	
@@ -215,6 +358,8 @@ def editExpoOwner(request, expo_name):
 	args['expo'].fecha_inicio = str(args['expo'].fecha_inicio)
 	args['expo'].hora_inicio = str(args['expo'].hora_inicio)
 	args['expo'].hora_final = str(args['expo'].hora_final)
+
+	args['stands'] = Stand.objects.filter(related_expo=selected_expo)
 	
 	form = EditExpoOwnerForm(instance = selected_expo)
 	args['form'] = form
@@ -314,15 +459,17 @@ def appController(request, action):
 			args['VISITANT_ID'] = visitant.id
 
 		if action == "GetStand":
-			selected_stand = Stand.objects.get(editKey=request.POST['SECRET_KEY'])
+			print(request.POST['SECRET_KEY'])
+			selected_stand = Stand.objects.filter(editKey=request.POST['SECRET_KEY']).first()
 			args['ID'] = selected_stand.id
 			args['COLOR1'] = selected_stand.color1
 			args['COLOR2'] = selected_stand.color2
-			args['LOGO'] = selected_stand.logotipo.url
 			args['STAND_TYPE'] = selected_stand.standType
 			args['WHATSAPP'] = selected_stand.whatsapp
 			args['WEBPAGE'] = selected_stand.webpage
 			args['POSITION'] = selected_stand.position
+			if selected_stand.logotipo != "":
+				args['LOGO'] = selected_stand.logotipo.url
 			if selected_stand.exhibition_video != "":
 				args['EXHIBITION_VIDEO'] = selected_stand.exhibition_video.url
 			if selected_stand.video_bienvenida != "":
@@ -333,6 +480,20 @@ def appController(request, action):
 				args['BANNER1'] = selected_stand.banner1.url
 			if selected_stand.banner2 != "":
 				args['BANNER2'] = selected_stand.banner2.url
+			if selected_stand.banner3 != "":
+				args['BANNER3'] = selected_stand.banner3.url
+			if selected_stand.banner4 != "":
+				args['BANNER4'] = selected_stand.banner4.url
+			if selected_stand.banner5 != "":
+				args['BANNER5'] = selected_stand.banner5.url
+			if selected_stand.banner6 != "":
+				args['BANNER6'] = selected_stand.banner6.url
+			if selected_stand.banner_horizontal1 != "":
+				args['BANNER_HORIZONTAL1'] = selected_stand.banner_horizontal1.url
+			if selected_stand.banner_horizontal2 != "":
+				args['BANNER_HORIZONTAL2'] = selected_stand.banner_horizontal2.url
+			if selected_stand.banner_horizontal3 != "":
+				args['BANNER_HORIZONTAL3'] = selected_stand.banner_horizontal3.url
 			args['STATUS'] = 0
 
 		if action == "GetStands":
@@ -362,6 +523,20 @@ def appController(request, action):
 					args["STANDS"][selected_stand.id] ['BANNER1'] = selected_stand.banner1.url
 				if selected_stand.banner2 != "":
 					args["STANDS"][selected_stand.id] ['BANNER2'] = selected_stand.banner2.url
+				if selected_stand.banner3 != "":
+					args["STANDS"][selected_stand.id] ['BANNER3'] = selected_stand.banner3.url
+				if selected_stand.banner4 != "":
+					args["STANDS"][selected_stand.id] ['BANNER4'] = selected_stand.banner4.url
+				if selected_stand.banner5 != "":
+					args["STANDS"][selected_stand.id] ['BANNER5'] = selected_stand.banner5.url
+				if selected_stand.banner6 != "":
+					args["STANDS"][selected_stand.id] ['BANNER6'] = selected_stand.banner6.url
+				if selected_stand.banner_horizontal1 != "":
+					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL1'] = selected_stand.banner_horizontal1.url
+				if selected_stand.banner_horizontal2 != "":
+					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL2'] = selected_stand.banner_horizontal2.url
+				if selected_stand.banner_horizontal3 != "":
+					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL3'] = selected_stand.banner_horizontal3.url
 			args['STATUS'] = 0
 
 		if action == "UploadDistribution":

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, Textarea, TextInput, MultipleChoiceField, Select
-from .models import Contact, Expo, Stand
+from .models import Contact, Expo, Stand, PlatformUser
 from django.contrib.auth.models import User
 
 class ContactForm(ModelForm):
@@ -49,6 +49,40 @@ class EditExpoOwnerForm(ModelForm):
 class EditStandExpositorForm(ModelForm):
 	class Meta:
 		model = Stand
-		fields = ('banner1', 'banner2', 'logotipo', 'video_bienvenida', 'whatsapp', 'chat', 'webpage', 'flyer_file', 'exhibition_video', 'color1', 'color2')
+		fields = ('banner1', 'banner2', 'banner3', 'banner4', 'banner5', 'banner6', 'banner_horizontal1', 'banner_horizontal2', 'banner_horizontal3', 'logotipo', 'video_bienvenida', 'whatsapp', 'chat', 'webpage', 'flyer_file', 'exhibition_video', 'color1', 'color2')
+		widgets = {
+		}
+
+class CreateUserForm(ModelForm):
+	class Meta:
+		model = User
+		fields = ('username', 'password')
+		widgets = {
+		}
+
+class EditPlatformUser(ModelForm):
+	class Meta:
+		OPTIONS = (
+	        ("Dueño de expo", "EXO"),
+	        ("Dueño de stand", "STO"),
+	        ("Visitante", "VIW")
+        )
+		model = PlatformUser
+		fields = ('user_expo', 'user_type', 'name')
+		widgets = {
+			'user_type': Select(choices=OPTIONS),
+		}
+
+class EditPlatformUser2(ModelForm):
+	class Meta:
+		model = PlatformUser
+		fields = ('user_stand', 'name')
+		widgets = {
+		}
+
+class EditStandExpoOwnerForm(ModelForm):
+	class Meta:
+		model = Stand
+		fields = ('nombre', 'packageStand', 'standType')
 		widgets = {
 		}

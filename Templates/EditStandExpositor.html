@@ -9,8 +9,15 @@
 {% block nav %}
 {% endblock %}
 
-{% block body1 %}
+{% block scripts %} 
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", '{% static "Build_StandPreview/StandPreview.json" %}', {onProgress: UnityProgress});
+    </script>
+{% endblock %}
 
+{% block body1 %}
+    <div id="unityContainer" class="center" style="width: 960px; height: 540px;"></div>
+    Secret Key del stand: {{ stand.editKey }}
 <div class="row Container">
     <div class="col-sm-3">
     </div>
