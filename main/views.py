@@ -3,7 +3,7 @@ from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import PlatformUser, Expo, Contact, VisitantRegister, Stand
+from .models import PlatformUser, Expo, Contact, VisitantRegister, Stand, Chat
 import datetime
 from django.conf import settings
 from .forms import ContactForm, EditExpoStaffForm, EditExpoOwnerForm, EditStandExpositorForm, CreateUserForm, EditPlatformUser, EditPlatformUser2, EditStandExpoOwnerForm
@@ -558,7 +558,33 @@ def appController(request, action):
 			args['HALL1'] = selected_expo.Hall1 
 			args['HALL2'] = selected_expo.Hall2 
 			args['STATUS'] = 0
+			args['STATUS'] = 0
 
-			
+		if action == "SendMessage":
+			print("SendMessage")
+			chat = Chat()
+
+			chat.sender = request.POST['SENDER']
+			chat.receiver = request.POST['RECEIVER']
+			chat.message = request.POST['MESSAGE']
+
+			chat.save()
+			args['STATUS'] = 0
+
+		if action == "GetMessages":
+			print("GetMessages")
+			chats = Chat.objects.filter(sender=request.POST['SENDER'])
+
+			args['CHATS'] = {}
+			cont = 0
+			for chat in chats:
+				
+				args['CHATS'][chat.id] = {}
+				args['CHATS'][chat.id]['RECEIVER'] = chat.receiver
+				args['CHATS'][chat.id]['SENDER'] = chat.sender
+				args['CHATS'][chat.id]['MESSAGE'] = chat.message
+				args['CHATS'][chat.id]['SENDERISSENDER'] = chat.senderIsSender
+				cont += 1
+			args['STATUS'] = 0
 		return JsonResponse(args, safe=False);
 

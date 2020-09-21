@@ -156,12 +156,11 @@ class PlatformUser(models.Model):
 			return self.user.username
 		return "No name";
 
-
-
 class Chat(models.Model):
-	sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
-	receiver = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
+	sender = models.CharField(default="", max_length=20, null=True, blank=True)
+	receiver = models.CharField(default="", max_length=20, null=True, blank=True)
 	message = models.TextField(default="default")
+	senderIsSender = models.BooleanField(default=True, null=True, blank=True)
 
 class Feedback(models.Model):
 	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
