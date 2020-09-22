@@ -33,4 +33,3 @@ urlpatterns = [
 
     path('App/<str:action>', appController, name = "appController"),
 ]
-createStandExpoOwner

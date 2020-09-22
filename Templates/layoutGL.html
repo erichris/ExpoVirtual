@@ -10,8 +10,15 @@
 
 {% block scripts %} 
 	<script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", '{% static "BuildLayout/expo.json" %}', {onProgress: UnityProgress});
+      	var unityInstance = UnityLoader.instantiate("unityContainer", '{% static "BuildLayout/expo.json" %}', {onProgress: UnityProgress});
+      	//in your html|js
+		function OnAppReady(){
+		    console.log("### application is loaded")
+		    unityInstance.SendMessage("LoadExpo", "ChangeExpoName", "{{expo.nombre}}");
+		}
     </script>
+
+
 {% endblock %}
 
 {% block body1 %}

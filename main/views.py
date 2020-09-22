@@ -497,7 +497,17 @@ def appController(request, action):
 			args['STATUS'] = 0
 
 		if action == "GetStands":
+			print("GetStands")
+
+			print("----------------")
+			print("----------------")
+			print("----------------")
+			print("----------------")
+			print("----------------")
+			print("----------------")
+			print("----------------")
 			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
+			print(request.POST['EXPO_NAME'])
 			selected_stands = Stand.objects.filter(related_expo=selected_expo)
 			args["STANDS"] = {}
 
