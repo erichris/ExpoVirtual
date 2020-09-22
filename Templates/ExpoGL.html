@@ -11,6 +11,10 @@
 {% block scripts %} 
 	<script>
       var unityInstance = UnityLoader.instantiate("unityContainer", '{% static "Build_Expo/expo_webgl.json" %}', {onProgress: UnityProgress});
+      function OnAppReady(){
+		    console.log("### application is loaded")
+		    unityInstance.SendMessage("LoadExpo", "ChangeExpoName2", "{{expo.nombre}}");
+		}
     </script>
 {% endblock %}
 
