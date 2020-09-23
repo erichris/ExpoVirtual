@@ -19,5 +19,13 @@
 {% endblock %}
 
 {% block body1 %}
-	<div id="unityContainer" class="center" style="width: 1920px; height: 980px;"></div>
+	<div class="webgl-content" style="width: 100%">
+      <div id="unityContainer" class="center" style="position: relative; left: 12.5vw;width: 75vw; height: 40vw;"></div>
+      <div class="footer" style="width: 75vw;position: relative; left: 12.5vw;">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">ExpoHall</div>
+      </div>
+    </div>
+	
 {% endblock %}
