@@ -3,12 +3,13 @@ from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import PlatformUser, Expo, Contact, VisitantRegister, Stand, Chat
+from .models import PlatformUser, Expo, Contact, VisitantRegister, Stand, Chat, Eventos
 import datetime
 from django.conf import settings
 from .forms import ContactForm, EditExpoStaffForm, EditExpoOwnerForm, EditStandExpositorForm, CreateUserForm, EditPlatformUser, EditPlatformUser2, EditStandExpoOwnerForm
 from django.http import JsonResponse
 import random
+from datetime import datetime
 
 @csrf_exempt
 def layout(request, expo_name):
@@ -16,6 +17,7 @@ def layout(request, expo_name):
 	args = {}
 	args['expo'] = selected_expo
 	return TemplateResponse(request, "layoutGL.html", args)
+
 
 @csrf_exempt
 # Create your views here.
@@ -425,6 +427,27 @@ def expoGL(request, expo_name):
 	args['expo'] = selected_expo
 	return TemplateResponse(request, "ExpoGL.html", args)
 
+def eventGL(request, expo_name):
+	selected_expo = Expo.objects.get(nombre=expo_name)
+	events = Eventos.objects.filter(related_expo=selected_expo)
+	now = datetime.now()
+
+	current_event = events[0]
+	eventHour = datetime(events[0].Fecha.year, events[0].Fecha.month, events[0].Fecha.day, events[0].Fecha.hour, events[0].Fecha.minute)
+	minsTo = eventHour - datetime.now()
+
+	for event in events:
+		eventHour = datetime(event.Fecha.year, event.Fecha.month, event.Fecha.day, event.Fecha.hour, event.Fecha.minute)
+		timeToEvent = eventHour - datetime.now()
+		print(timeToEvent)
+		if(minsTo > timeToEvent):
+			current_event = event
+
+
+	args = {}
+	args['event'] = current_event
+	return TemplateResponse(request, "LiveEvents.html", args)
+
 @csrf_exempt
 def appController(request, action):
 	print("App request")
@@ -498,14 +521,6 @@ def appController(request, action):
 
 		if action == "GetStands":
 			print("GetStands")
-
-			print("----------------")
-			print("----------------")
-			print("----------------")
-			print("----------------")
-			print("----------------")
-			print("----------------")
-			print("----------------")
 			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
 			print(request.POST['EXPO_NAME'])
 			selected_stands = Stand.objects.filter(related_expo=selected_expo)
@@ -577,6 +592,7 @@ def appController(request, action):
 			chat.sender = request.POST['SENDER']
 			chat.receiver = request.POST['RECEIVER']
 			chat.message = request.POST['MESSAGE']
+			chat.senderIsSender = request.POST['SENDERISSENDER']
 
 			chat.save()
 			args['STATUS'] = 0
@@ -592,6 +608,24 @@ def appController(request, action):
 				args['CHATS'][chat.id] = {}
 				args['CHATS'][chat.id]['RECEIVER'] = chat.receiver
 				args['CHATS'][chat.id]['SENDER'] = chat.sender
+				args['CHATS'][chat.id]['MESSAGE'] = chat.message
+				args['CHATS'][chat.id]['SENDERISSENDER'] = chat.senderIsSender
+				cont += 1
+			args['STATUS'] = 0
+		if action == "GetMessagesClient":
+			print("GetMessagesClient")
+			chats = Chat.objects.filter(receiver=request.POST['SENDER'])
+
+
+
+			args['CHATS'] = {}
+			cont = 0
+			for chat in chats:
+				#user = VisitantRegister.objects.get(id=chat.sender)
+				args['CHATS'][chat.id] = {}
+				args['CHATS'][chat.id]['RECEIVER'] = chat.receiver
+				args['CHATS'][chat.id]['SENDER'] = chat.sender
+				#args['CHATS'][chat.id]['SENDERNAME'] = user.mail
 				args['CHATS'][chat.id]['MESSAGE'] = chat.message
 				args['CHATS'][chat.id]['SENDERISSENDER'] = chat.senderIsSender
 				cont += 1

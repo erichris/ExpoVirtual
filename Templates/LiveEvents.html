@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Tu Expo Virtual
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block scripts %} 
+    <script>
+    </script>
+{% endblock %}
+
+{% block body1 %}
+<style type="text/css">
+    
+.container {
+  position: relative;
+  
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  margin: 0;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 3.99vw;
+  left: 2vw;
+  bottom: 0;
+  right: 0;
+  width: 95%;
+  height: 100%;
+}
+</style>
+    <img id="" class="FeriaIcon center" src="{% static "images/SalaCine.png"%}" style="width:100vw; position: absolute">
+    <div class="container-fluid" >
+            <div class="row">
+                <div class="col-sm-2" >
+
+                </div>
+                <div class="col-sm-8" >
+                    <div class="row">
+                        <div class="col-sm-12 container" style="">
+                            <iframe class="responsive-iframe" src="https://www.youtube.com/embed/{{ event.redirect_url }}" width="1250" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}
+
+
+
+
+
+        
+
+
+
