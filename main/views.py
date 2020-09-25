@@ -49,6 +49,7 @@ def login(request):
 			user = authenticate(request, username=username, password=password)
 			if user is not None:
 				platformUser = PlatformUser.objects.filter(user=user).first()
+				login(request, user)
 				if platformUser.user_type == "ADM":
 					return redirect('admin/')
 				elif platformUser.user_type == "STF":
