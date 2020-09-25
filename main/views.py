@@ -41,7 +41,7 @@ def home(request):
 	return render(request, "Landing.html",{'form': form})
 
 @csrf_exempt
-def login(request):
+def loginW(request):
 	if request.POST:
 		if request.POST['Action'] == "Login":
 			username = request.POST['user']

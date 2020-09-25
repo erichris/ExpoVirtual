@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .views import home, login, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor, expoGL, layout, createExpoOwner, editUserExpoOwner, editUserStandOwner, createStandOwner, editStandExpoOwner, createStandExpoOwner, eventGL
+from .views import home, loginW, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor, expoGL, layout, createExpoOwner, editUserExpoOwner, editUserStandOwner, createStandOwner, editStandExpoOwner, createStandExpoOwner, eventGL
 
 urlpatterns = [
     path('', home, name = "home"),
-    path('Login', login, name = "LoginStaff"),
+    path('Login', loginW, name = "LoginStaff"),
     path('Staff/CreateExpo', createExpoStaff, name = ""),
     path('Staff/SelectExpo', selectExpoStaff, name = ""),
     path('Staff/EditExpo/<str:expo_name>/CreateOwnerUser', CreateOwnerUser, name = ""),
