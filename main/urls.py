@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from .views import home, loginW, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor, expoGL, layout, createExpoOwner, editUserExpoOwner, editUserStandOwner, createStandOwner, editStandExpoOwner, createStandExpoOwner, eventGL
+from .views import home, loginW, createExpoStaff, selectExpoStaff, editExpoStaff, editExpoOwner, selectExpoOwner, editExpoLayout, test, CreateOwnerUser, appController, selectStandExpositor, editStandExpositor, expoGL, layout, createExpoOwner, editUserExpoOwner, editUserStandOwner, createStandOwner, editStandExpoOwner, createStandExpoOwner, eventGL, export_asistentes_csv
 
 urlpatterns = [
     path('', home, name = "home"),
@@ -27,6 +27,7 @@ urlpatterns = [
     path('expo/<str:expo_name>', expoGL, name = ""),
     path('event/<str:expo_name>', eventGL, name = ""),
     path('page/<str:expo_name>', test, name = ""),
+    path('estadisticas', export_asistentes_csv, name = ""),
 
 
 

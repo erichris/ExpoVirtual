@@ -7,9 +7,10 @@ from .models import PlatformUser, Expo, Contact, VisitantRegister, Stand, Chat, 
 import datetime
 from django.conf import settings
 from .forms import ContactForm, EditExpoStaffForm, EditExpoOwnerForm, EditStandExpositorForm, CreateUserForm, EditPlatformUser, EditPlatformUser2, EditStandExpoOwnerForm
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import random
 from datetime import datetime
+import csv
 
 @csrf_exempt
 def layout(request, expo_name):
@@ -633,3 +634,16 @@ def appController(request, action):
 			args['STATUS'] = 0
 		return JsonResponse(args, safe=False);
 
+
+def export_asistentes_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="asistentes.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Nombre', 'Correo', 'Telefono', 'Expo'])
+
+    visitantList = VisitantRegister.objects.all().values_list('name', 'mail', 'tel', 'related_expo')
+    for user in visitantList:
+        writer.writerow(user)
+
+    return response
