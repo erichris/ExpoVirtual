@@ -30,6 +30,10 @@ class EditExpoStaffForm(ModelForm):
 		fields = ('nombre', 'bannerA', 'bannerB', 'video', 'stands_amount' )
 		widgets = {
 			'stands_amount': Select(choices=OPTIONS),
+			#'bannerA': TextInput(attrs={'class':'custom-file-input InputText ContactFormElement', 'type': 'file'}),
+		}
+		labels = {
+			'bannerA': 'Banner A',
 		}
 
 class CreateOwnerUserForm(ModelForm):
@@ -44,6 +48,9 @@ class EditExpoOwnerForm(ModelForm):
 		model = Expo
 		fields = ('nombre', 'bannerA', 'bannerB', 'video', 'TripticoPage1', 'Calendario' )
 		widgets = {
+		}
+		labels = {
+			'nombre': 'Nombre del stand', 'bannerA': 'Banner Hall Izquierdo', 'bannerB': 'Banner Hall Derecho', 'video': 'Video del Hall', 'TripticoPage1': 'Triptico'
 		}
 
 class EditStandExpositorForm(ModelForm):
@@ -68,9 +75,14 @@ class EditPlatformUser(ModelForm):
 	        ("Visitante", "VIW")
         )
 		model = PlatformUser
-		fields = ('user_expo', 'user_type', 'name')
+		fields = ('name', 'user_expo', 'user_type')
 		widgets = {
 			'user_type': Select(choices=OPTIONS),
+		}
+		labels={
+			'name': 'nombre',
+			'user_expo': 'Expos de las que es dueño',
+			'user_type': 'Privilegios asignados'
 		}
 
 class EditPlatformUser2(ModelForm):

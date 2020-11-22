@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Staff - Espositor Edit Stand
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="/Login" class="brand-link">
+    <span class="brand-text font-weight-light">Logout</span>
+  </a>
+
+
+  <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <li class="nav-header">Lista de expos</li>
+    <li class="nav-item">
+      <a href="/Staff/{{ url_new_expo }}"  class="nav-link">
+        <p>Crear nueva expo...</p>
+      </a>
+    </li>
+    {% for expo in expos %}
+        <li class="nav-item">
+          <a href="/Staff/EditExpo/{{ expo.nombre }}"  class="nav-link">
+            <p>{{ expo.nombre }}</p>
+          </a>
+        </li>
+        {% endfor %}
+
+
+      <li class="nav-header">Dueños de expos</li>
+      <li class="nav-item">
+        <a href="/Staff/CreateExpositor"  class="nav-link">
+          <p>Crear Usuario...</p>
+        </a>
+      </li>
+        {% for owner in expo_owners %}
+            <li class="nav-item">
+              <a href="/Staff/EditExpoOwner/{{ owner.id }}"  class="nav-link">
+                <p>{{ owner.user.username }}</p>
+              </a>
+            </li>
+            {% endfor %}
+
+
+    </nav>
+</aside>
+
+<div class="content-wrapper">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Editar Usuario: <b>{{ user.user.username }}</b></h3>
+            </div>
+        <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="card-body">
+            {{ form|crispy }}
+
+        <!--label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
+              <input type="datetime-local" id="start"
+             name="HoraInicio" value="{{ expo.fecha_inicio }}T{{ expo.hora_inicio }}"><br>
+
+          <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
+          <input type="datetime-local" id="end"
+             name="HoraFin" value="{{ expo.fecha_final }}T{{ expo.hora_final }}"><br-->
+
+              <button type="submit" class="btn btn-primary">GUARDAR CAMBIOS</button>
+            </div>
+    </form>
+  </div>
+  </div>
+</div>
+</div>
+</section>
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

@@ -16,11 +16,12 @@ urlpatterns = [
     path('ExpoOwner/Layout/<str:expo_name>', layout, name = ""),
     path('ExpoOwner/CreateExpositor', createStandOwner, name = ""),
     path('ExpoOwner/EditExpo/CreateStand/<str:id>', createStandExpoOwner, name = ""),
+    path('ExpoOwner/EditExpo/CreateStand/', createStandExpoOwner, name = ""),
     path('ExpoOwner/EditExpo/layout', editExpoLayout, name = ""),
     path('ExpoOwner/EditExpo/<str:expo_name>', editExpoOwner, name = ""),
     path('ExpoOwner/EditExpoOwner/<str:id>', editUserStandOwner, name = ""),
     path('ExpoOwner/StandEdit/<str:id>', editStandExpoOwner, name = ""),
-    
+
 
     path('Expositor/SelectStand', selectStandExpositor, name = ""),
     path('Expositor/EditStand/<str:id_stand>', editStandExpositor, name = ""),

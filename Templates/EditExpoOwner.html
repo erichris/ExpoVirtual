@@ -11,21 +11,94 @@
 
 {% block body1 %}
 
-<div class="row Container">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-6">
-        <p class="" id="">Editar Expo</p>
-            <form method="POST" enctype='multipart/form-data'>
-            {% csrf_token %}
-            <div id="EditExpoForm">
-                {{ form|crispy }}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="/Login" class="brand-link">
+    <span class="brand-text font-weight-light">Logout</span>
+  </a>
 
-                <button type="submit" class="btn btn-primary">GUARDAR CAMBIOS</button>
+
+  <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <li class="nav-header">Lista de expos</li>
+    {% for expo in expos %}
+        <li class="nav-item">
+          <a href="/ExpoOwner/EditExpo/{{ expo.nombre }}"  class="nav-link">
+            <p>{{ expo.nombre }}</p>
+          </a>
+        </li>
+        {% endfor %}
+
+        <li class="nav-header">Stands de la expo</li>
+        <li class="nav-item">
+          <a href="/ExpoOwner/EditExpo/CreateStand/{{ expo.id }}"  class="nav-link">
+            <p>Crear Stand...</p>
+          </a>
+        </li>
+          {% for stand in stands %}
+              <li class="nav-item">
+                <a href="/ExpoOwner/StandEdit/{{ stand.id }}"  class="nav-link">
+                  <p>{{ stand.nombre }}</p>
+                </a>
+              </li>
+              {% endfor %}
+
+
+
+      <li class="nav-header">Dueños de stands</li>
+      <li class="nav-item">
+        <a href="/ExpoOwner/CreateExpositor"  class="nav-link">
+          <p>Crear Usuario...</p>
+        </a>
+      </li>
+        {% for owner in stands_owners %}
+            <li class="nav-item">
+              <a href="/ExpoOwner/EditExpoOwner/{{ owner.id }}"  class="nav-link">
+                <p>{{ owner.user.username }}</p>
+              </a>
+            </li>
+            {% endfor %}
+
+
+    </nav>
+</aside>
+
+
+<div class="content-wrapper">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Editar Expo: <b>{{ user.user.username }}</b></h3>
             </div>
-        </form>
-    </div>
+        <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div id="EditExpoForm" class="card-body">
+            {{ form|crispy }}
+
+        <!--label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
+              <input type="datetime-local" id="start"
+             name="HoraInicio" value="{{ expo.fecha_inicio }}T{{ expo.hora_inicio }}"><br>
+
+          <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
+          <input type="datetime-local" id="end"
+             name="HoraFin" value="{{ expo.fecha_final }}T{{ expo.hora_final }}"><br-->
+
+              <button type="submit" class="btn btn-primary">GUARDAR CAMBIOS</button>
+            </div>
+    </form>
+  </div>
+  </div>
 </div>
+</div>
+</section>
+</div>
+
+
+
+
 
 
 
@@ -33,21 +106,12 @@
 	<a href="layout">Editar Expo</a><br>
 
 
-	
+
 {% endblock %}
 
 {% block body2 %}
-Crea o edita un stand:
-    <div class="expos row">
-        {% for stand in stands %}
-            <div class="col-sm-2">
-                <button class="ExpoElementlement" onclick="window.location = '/ExpoOwner/StandEdit/{{ stand.id }}' ;">{{ stand.nombre }}</button>
-            </div>
-        {% endfor %}
-        <div class="col-sm-2">
-            <button class="ExpoElementlement" onclick="window.location = 'CreateStand/{{ expo.id }}' ;">Crear un nuevo stand</button>
-        </div>
-    </div>
+
+
 {% endblock %}
 
 {% block body3 %}

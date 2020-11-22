@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Staff - Staff Edit Expo
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body1 %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="/Login" class="brand-link">
+    <span class="brand-text font-weight-light">Logout</span>
+  </a>
+
+
+  <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <li class="nav-header">Lista de expos</li>
+    {% for expo in expos %}
+        <li class="nav-item">
+          <a href="/ExpoOwner/EditExpo/{{ expo.nombre }}"  class="nav-link">
+            <p>{{ expo.nombre }}</p>
+          </a>
+        </li>
+        {% endfor %}
+
+        <li class="nav-header">Stands de la expo</li>
+        <li class="nav-item">
+          <a href="/ExpoOwner/EditExpo/CreateStand/{{ expo.id }}"  class="nav-link">
+            <p>Crear Stand...</p>
+          </a>
+        </li>
+          {% for stand in stands %}
+              <li class="nav-item">
+                <a href="/ExpoOwner/StandEdit/{{ stand.id }}"  class="nav-link">
+                  <p>{{ stand.nombre }}</p>
+                </a>
+              </li>
+              {% endfor %}
+
+
+
+      <li class="nav-header">Dueños de stands</li>
+      <li class="nav-item">
+        <a href="/ExpoOwner/CreateExpositor"  class="nav-link">
+          <p>Crear Usuario...</p>
+        </a>
+      </li>
+        {% for owner in stands_owners %}
+            <li class="nav-item">
+              <a href="/ExpoOwner/EditExpoOwner/{{ owner.id }}"  class="nav-link">
+                <p>{{ owner.user.username }}</p>
+              </a>
+            </li>
+            {% endfor %}
+
+
+    </nav>
+</aside>
+
+
+<div class="content-wrapper">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="card card-primary">
+          <div class="card-header">
+              <h3 class="card-title">Crear Cuenta Administradora de Expo</h3>
+          </div>
+          <form method="POST" id="Login">
+              {% csrf_token %}
+              <div id="EditExpoForm" class="card-body">
+            		{{ form|crispy }}
+
+    	            <button type="submit" class="btn btn-primary">CREAR CUENTA</button>
+
+                </div>
+          </form>
+          </div
+        </div
+      </div
+    </div
+  </section
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+{% block body2 %}
+{% endblock %}
+
+{% block body3 %}
+{% endblock %}
+
+{% block body4 %}
+{% endblock %}
+
+{% block body5 %}
+{% endblock %}
+
+{% block body6 %}
+{% endblock %}
+
+{% block body7 %}
+{% endblock %}
+
+
+
+{% block footer %}
+
+{% endblock %}

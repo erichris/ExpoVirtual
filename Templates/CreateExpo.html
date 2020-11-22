@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 {% block title %}
     Staff - Staff Admin
 {% endblock %}
@@ -10,35 +10,89 @@
 
 {% block body1 %}
 
-
-	<div id="CreateExpoBox" class="col-sm-6">
-        <p class="" id="">Crear Expo</p>
-        <form method="POST" id="Login">
-        {% csrf_token %}
-        	<div id="CreateExpoForm">
-	        	<input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="CreateExpo">
-	            <input class="InputText" type="text" id="nombreExpo" name="nombreExpo" placeholder="Nombre de la Expo" autocomplete="off"><br>
-	            <label for="numeroStands">Selecciona el numero de stands:</label><br>
-	            <select id="numeroStands" name="numeroStands">
-				    <option value="40">40</option>
-				    <option value="80" selected>80</option>
-				    <option value="120">120</option>
-				</select><br>
-				
-				<label for="start">Selecciona la fecha y hora del fin de la expo</label><br>
-	            <input type="datetime-local" id="start"
-			       name="HoraInicio" value="2020-08-12T00:00"><br>
-			    
-			    <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
-			    <input type="datetime-local" id="end"
-			       name="HoraFin" value="2020-08-12T00:00"><br>
-	            <button type="submit">ENTRAR</button>
-            </div>
-		</form>
-	</div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="/Login" class="brand-link">
+    <span class="brand-text font-weight-light">Logout</span>
+  </a>
 
 
-	
+  <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <li class="nav-header">Lista de expos</li>
+    <li class="nav-item">
+      <a href="/Staff/{{ url_new_expo }}"  class="nav-link">
+        <p>Crear nueva expo...</p>
+      </a>
+    </li>
+    {% for expo in expos %}
+        <li class="nav-item">
+          <a href="/Staff/EditExpo/{{ expo.nombre }}"  class="nav-link">
+            <p>{{ expo.nombre }}</p>
+          </a>
+        </li>
+        {% endfor %}
+
+
+      <li class="nav-header">Dueños de expos</li>
+      <li class="nav-item">
+        <a href="/Staff/CreateExpositor"  class="nav-link">
+          <p>Crear Usuario...</p>
+        </a>
+      </li>
+        {% for owner in expo_owners %}
+            <li class="nav-item">
+              <a href="/Staff/EditExpoOwner/{{ owner.id }}"  class="nav-link">
+                <p>{{ owner.user.username }}</p>
+              </a>
+            </li>
+            {% endfor %}
+
+
+    </nav>
+</aside>
+
+
+<div class="content-wrapper">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="card card-primary">
+          <div class="card-header">
+              <h3 class="card-title">Crear Expo  </h3>
+          </div>
+          <form method="POST" id="Login">
+              {% csrf_token %}
+        	     <div id="CreateExpoForm" class="card-body">
+    	        	 <input style="position: absolute; left: -100vw" type="text" name="Action" placeholder="Action" value="CreateExpo">
+
+                 <input class="InputText form-control" type="text" id="nombreExpo" name="nombreExpo" placeholder="Nombre de la Expo" autocomplete="off" required><br>
+    	           <label for="numeroStands">Selecciona el numero de stands:</label><br>
+    	           <select id="numeroStands" class="custom-select" name="numeroStands">
+    				     <option value="40">40</option>
+    				     <option value="80" selected>80</option>
+    				     <option value="120">120</option>
+				         </select><br><br>
+
+        				 <label for="start">Selecciona la fecha y hora del inicio de la expo</label><br>
+        	            <input type="datetime-local" id="start"
+        			       name="HoraInicio" value="2020-08-12T00:00"><br><br>
+
+			           <label for="end">Selecciona la fecha y hora del fin de la expo:</label><br>
+			           <input type="datetime-local" id="end"
+			              name="HoraFin" value="2020-08-12T00:00"><br><br>
+	               <button class="btn btn-primary" type="submit">Crear Expo</button>
+              </div>
+		        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
 {% endblock %}
 
 {% block body2 %}

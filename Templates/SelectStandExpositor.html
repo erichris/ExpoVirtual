@@ -10,16 +10,26 @@
 
 {% block body1 %}
 
-	Edita un stand:
-	<div class="expos row">
-		{% for stand in stands %}
-			<div class="col-sm-2">
-				<button class="ExpoElementlement" onclick="window.location = 'EditStand/{{ stand.id }}' ;">{{ stand.nombre }}</button>
-			</div>
-		{% endfor %}
-	</div>
 
-	
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/Login" class="brand-link">
+      <span class="brand-text font-weight-light">Logout</span>
+    </a>
+
+
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <li class="nav-header">Lista de Stands</li>
+      {% for stand in stands %}
+          <li class="nav-item">
+            <a href="EditStand/{{ stand.id }}"  class="nav-link">
+              <p>{{ stand.nombre }}</p>
+            </a>
+          </li>
+          {% endfor %}
+        </nav>
+  </aside>
+
 {% endblock %}
 
 {% block body2 %}

@@ -67,6 +67,10 @@ def loginW(request):
 
 @csrf_exempt
 def createExpoStaff(request):
+	args = {}
+	args['expos'] = Expo.objects.all()
+	args['url_new_expo'] = "CreateExpo"
+	args['expo_owners'] = PlatformUser.objects.filter(user_type='EXO')
 	if request.POST:
 		if request.POST['Action'] == "CreateExpo":
 			numero_stands = request.POST['numeroStands']
@@ -83,25 +87,29 @@ def createExpoStaff(request):
 			NewExpo.hora_final = datetime_fin_obj.time()
 			NewExpo.stands_amount = numero_stands
 			NewExpo.save()
-			return redirect('/Staff/SelectExpo');
+			return redirect('/Staff/SelectExpo', args);
 
-	return render(request, "CreateExpo.html")
+	return render(request, "CreateExpo.html", args)
 
 def createExpoOwner(request):
+	args = {}
+	args['expos'] = Expo.objects.all()
+	args['url_new_expo'] = "CreateExpo"
+	args['expo_owners'] = PlatformUser.objects.filter(user_type='EXO')
 	if request.POST:
 		form = CreateUserForm(request.POST)
 		if form.is_valid():
 			temp_user = User()
 			temp_user = form.save(commit=False)
+			temp_user.set_password(request.POST["password"])
 			temp_user.save()
 			temp_platform_user = PlatformUser()
 			temp_platform_user.user = temp_user;
 			temp_platform_user.user_type = "EXO"
 			temp_platform_user.save()
-			return redirect('/Staff/SelectExpo');
-	
+			return redirect('/Staff/SelectExpo', args);
+
 	form = CreateUserForm()
-	args = {}
 	args['form'] = form
 	return TemplateResponse(request, "CreateOwnerUser.html", args)
 
@@ -117,13 +125,23 @@ def createStandOwner(request):
 			temp_platform_user.user_type = "STO"
 			temp_platform_user.save()
 			return redirect('/ExpoOwner/SelectExpo');
-	
+
 	form = CreateUserForm()
 	args = {}
+
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
 	args['form'] = form
-	return TemplateResponse(request, "CreateOwnerUser.html", args)
+	args['stands'] = Stand.objects.all()
+
+	args['stands_owners'] = PlatformUser.objects.all()
+	return TemplateResponse(request, "CreateOwnerUser2.html", args)
 
 def editUserExpoOwner(request, id):
+	args = {}
+	args['expos'] = Expo.objects.all()
+	args['url_new_expo'] = "CreateExpo"
+	args['expo_owners'] = PlatformUser.objects.filter(user_type='EXO')
 	selected_user = PlatformUser.objects.get(id=id)
 	if request.POST:
 		form = EditPlatformUser(request.POST)
@@ -136,16 +154,20 @@ def editUserExpoOwner(request, id):
 				expos.append(expo)
 			selected_user.user_expo.set(expos);
 			selected_user.save();
-			
+
 			return redirect('/Staff/EditExpoOwner/' + str(selected_user.id));
-	args = {}
+
 	args['user'] = selected_user
 	form = EditPlatformUser(instance = selected_user)
 	args['form'] = form
-	return TemplateResponse(request, "EditPlatformUser.html", args)
+	return TemplateResponse(request, "EditPlatformUser2.html", args)
 
 def editUserStandOwner(request, id):
 	selected_user = PlatformUser.objects.get(id=id)
+	args = {}
+
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
 	if request.POST:
 		form = EditPlatformUser2(request.POST)
 		if form.is_valid():
@@ -156,15 +178,22 @@ def editUserStandOwner(request, id):
 				stands.append(stand)
 			selected_user.user_stand.set(stands);
 			selected_user.save();
-			
+
 			return redirect('/ExpoOwner/SelectExpo');
-	args = {}
 	args['user'] = selected_user
 	form = EditPlatformUser2(instance = selected_user)
 	args['form'] = form
+	args['stands'] = Stand.objects.all()
+
+	args['stands_owners'] = PlatformUser.objects.all()
 	return TemplateResponse(request, "EditPlatformUser.html", args)
 
 def editStandExpoOwner(request, id):
+	args = {}
+
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
+
 	selected_stand = Stand.objects.get(id=id)
 	if request.POST:
 		form = EditStandExpoOwnerForm(request.POST)
@@ -173,15 +202,24 @@ def editStandExpoOwner(request, id):
 			selected_stand.packageStand = request.POST["packageStand"];
 			selected_stand.standType = request.POST["standType"];
 			selected_stand.save();
-			
+
 			return redirect('/ExpoOwner/SelectExpo');
-	args = {}
+
 	args['stand'] = selected_stand
 	form = EditStandExpoOwnerForm(instance = selected_stand)
 	args['form'] = form
+
+	args['stands'] = Stand.objects.filter(related_expo=selected_stand.related_expo)
+
+	args['stands_owners'] = PlatformUser.objects.filter(user_type='STO').filter(user_expo=selected_stand.related_expo)
+
 	return TemplateResponse(request, "EditStandExpoOwner.html", args)
 
-def createStandExpoOwner(request, id):
+def createStandExpoOwner(request, id= 0):
+	args = {}
+
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
 	if request.POST:
 		form = EditStandExpoOwnerForm(request.POST)
 		if form.is_valid():
@@ -192,11 +230,14 @@ def createStandExpoOwner(request, id):
 			selected_stand.standType = request.POST["standType"];
 			selected_stand.editKey = str(id) + "-" + str(random.randint(0,10000000))
 			selected_stand.save();
-			
+
 			return redirect('/ExpoOwner/SelectExpo');
-	args = {}
 	form = EditStandExpoOwnerForm()
 	args['form'] = form
+	args['stands'] = Stand.objects.all()
+
+	args['stands_owners'] = PlatformUser.objects.all()
+
 	return TemplateResponse(request, "EditStandExpoOwner.html", args)
 
 @csrf_exempt
@@ -225,7 +266,6 @@ def selectExpoStaff(request):
 	args = {}
 	args['expos'] = Expo.objects.all()
 	args['url_new_expo'] = "CreateExpo"
-
 	args['expo_owners'] = PlatformUser.objects.filter(user_type='EXO')
 
 
@@ -240,7 +280,7 @@ def selectExpoOwner(request):
 
 	args['stands_owners'] = PlatformUser.objects.filter(user_type='STO')
 
-	
+
 
 	return TemplateResponse(request, "SelectExpoOwner.html", args)
 
@@ -295,8 +335,12 @@ def editStandExpositor(request, id_stand):
 				selected_stand.banner_horizontal3 = request.FILES['banner_horizontal3'];
 			selected_stand.save();
 			return redirect('/Expositor/EditStand/' + str(selected_stand.id));
-	
+
 	args = {}
+
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['stands'] = platformUser.user_stand.all()
+
 	args['stand'] = selected_stand
 	form = EditStandExpositorForm(instance = selected_stand)
 	args['form'] = form
@@ -321,21 +365,31 @@ def editExpoStaff(request, expo_name):
 				selected_expo.video = request.FILES['video'];
 			selected_expo.save();
 			return redirect('/Staff/EditExpo/' + selected_expo.nombre);
-	
+
 	args = {}
 	args['expo'] = selected_expo
 	args['expo'].fecha_final = str(args['expo'].fecha_final)
 	args['expo'].fecha_inicio = str(args['expo'].fecha_inicio)
 	args['expo'].hora_inicio = str(args['expo'].hora_inicio)
 	args['expo'].hora_final = str(args['expo'].hora_final)
-	
+
 	form = EditExpoStaffForm(instance = selected_expo)
 	args['form'] = form
+
+	args['expos'] = Expo.objects.all()
+	args['url_new_expo'] = "CreateExpo"
+	args['expo_owners'] = PlatformUser.objects.filter(user_type='EXO')
 
 	return TemplateResponse(request, "EditExpo.html", args)
 
 @csrf_exempt
 def editExpoOwner(request, expo_name):
+	args = {}
+
+	platformUser = PlatformUser.objects.get(user=request.user)
+	args['expos'] = platformUser.user_expo.all()
+
+
 	selected_expo = Expo.objects.get(nombre=expo_name)
 	if request.POST:
 		form = EditExpoOwnerForm(request.POST, request.FILES)
@@ -355,8 +409,7 @@ def editExpoOwner(request, expo_name):
 				selected_expo.Calendario = request.FILES['Calendario'];
 			selected_expo.save();
 			return redirect('/ExpoOwner/EditExpo/' + selected_expo.nombre);
-	
-	args = {}
+
 	args['expo'] = selected_expo
 	args['expo'].fecha_final = str(args['expo'].fecha_final)
 	args['expo'].fecha_inicio = str(args['expo'].fecha_inicio)
@@ -364,7 +417,9 @@ def editExpoOwner(request, expo_name):
 	args['expo'].hora_final = str(args['expo'].hora_final)
 
 	args['stands'] = Stand.objects.filter(related_expo=selected_expo)
-	
+
+	args['stands_owners'] = PlatformUser.objects.filter(user_type='STO').filter(user_expo=selected_expo)
+
 	form = EditExpoOwnerForm(instance = selected_expo)
 	args['form'] = form
 	return TemplateResponse(request, "EditExpoOwner.html", args)
@@ -416,7 +471,7 @@ def test(request, expo_name):
 		args['Patrocinador'].append(selected_expo.Patrocinador9.url)
 	if(selected_expo.Patrocinador10 != ""):
 		args['Patrocinador'].append(selected_expo.Patrocinador10.url)
-	
+
 	form = ContactForm()
 	args['form'] = form;
 	print(args['Patrocinador'])
@@ -582,8 +637,8 @@ def appController(request, action):
 		if action == "GetDistribution":
 			print("GetDistribution")
 			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
-			args['HALL1'] = selected_expo.Hall1 
-			args['HALL2'] = selected_expo.Hall2 
+			args['HALL1'] = selected_expo.Hall1
+			args['HALL2'] = selected_expo.Hall2
 			args['STATUS'] = 0
 			args['STATUS'] = 0
 
@@ -606,7 +661,7 @@ def appController(request, action):
 			args['CHATS'] = {}
 			cont = 0
 			for chat in chats:
-				
+
 				args['CHATS'][chat.id] = {}
 				args['CHATS'][chat.id]['RECEIVER'] = chat.receiver
 				args['CHATS'][chat.id]['SENDER'] = chat.sender

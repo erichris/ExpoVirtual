@@ -10,33 +10,53 @@
 
 {% block body1 %}
 
-	Crea o edita una expo:
-	<div class="expos row">
-		{% for expo in expos %}
-			<div class="col-sm-2">
-				<button class="ExpoElementlement" onclick="window.location = 'EditExpo/{{ expo.nombre }}' ;">{{ expo.nombre }}</button>
-			</div>
-		{% endfor %}
-		<div class="col-sm-2">
-			<button class="ExpoElementlement" onclick="window.location = '{{ url_new_expo }}' ;">Crear nueva expo</button>
-		</div>
-	</div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="/Login" class="brand-link">
+    <span class="brand-text font-weight-light">Logout</span>
+  </a>
 
-	
+
+  <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <li class="nav-header">Lista de expos</li>
+    <li class="nav-item">
+      <a href="/Staff/{{ url_new_expo }}"  class="nav-link">
+        <p>Crear nueva expo...</p>
+      </a>
+    </li>
+    {% for expo in expos %}
+        <li class="nav-item">
+          <a href="/Staff/EditExpo/{{ expo.nombre }}"  class="nav-link">
+            <p>{{ expo.nombre }}</p>
+          </a>
+        </li>
+        {% endfor %}
+
+
+      <li class="nav-header">Dueños de expos</li>
+      <li class="nav-item">
+        <a href="/Staff/CreateExpositor"  class="nav-link">
+          <p>Crear Usuario...</p>
+        </a>
+      </li>
+        {% for owner in expo_owners %}
+            <li class="nav-item">
+              <a href="/Staff/EditExpoOwner/{{ owner.id }}"  class="nav-link">
+                <p>{{ owner.user.username }}</p>
+              </a>
+            </li>
+            {% endfor %}
+
+
+    </nav>
+</aside>
+
+
+
 {% endblock %}
 
 {% block body2 %}
-	Crea o edita un usuario con privilegios de Dueño de Expo:
-	<div class="expos row">
-		{% for owner in expo_owners %}
-			<div class="col-sm-2">
-				<button class="ExpoElementlement" onclick="window.location = 'EditExpoOwner/{{ owner.id }}' ;">{{ owner.user.username }}</button>
-			</div>
-		{% endfor %}
-		<div class="col-sm-2">
-			<button class="ExpoElementlement" onclick="window.location = 'CreateExpositor' ;">Crear nueva cuenta</button>
-		</div>
-	</div>
+
 {% endblock %}
 
 {% block body3 %}
