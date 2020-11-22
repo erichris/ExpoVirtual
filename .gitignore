@@ -3,3 +3,4 @@ static\Build_Expo
 static\Build_StandPreview
 static\BuildLayout
 main\__pycache__
+expodjango/__pycache__/wsgi.cpython-37.pyc
