@@ -529,14 +529,21 @@ def appController(request, action):
 
 		if action == "Register":
 			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
-			visitant = VisitantRegister()
-			visitant.name = request.POST['NAME']
-			visitant.tel = request.POST['TEL']
-			visitant.mail = request.POST['MAIL']
-			visitant.related_expo = selected_expo
-			visitant.save()
-			args['STATUS'] = 0
-			args['VISITANT_ID'] = visitant.id
+			#visitant = VisitantRegister()
+			name = request.POST['NAME']
+			tel = request.POST['TEL']
+			mail = request.POST['MAIL']
+			password = request.POST['PASS']
+			#visitant.related_expo = selected_expo
+			#visitant.save()
+
+			user = authenticate(request, username=name, password=password)
+			if user is not None:
+				platformUser = PlatformUser.objects.filter(user=user).first()
+				args['STATUS'] = 0
+				args['VISITANT_ID'] = user.id
+			else:
+				args['STATUS'] = 1
 
 		if action == "GetStand":
 			print(request.POST['SECRET_KEY'])
