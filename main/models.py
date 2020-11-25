@@ -64,7 +64,7 @@ class ExpoDesign(models.Model):
 	class Meta:
 		verbose_name = "ExpoDesign"
 		verbose_name_plural = "ExpoDesigns"
-	
+
 	def __str__(self):
 		return self.related_expo.nombre
 
@@ -129,8 +129,9 @@ class Eventos(models.Model):
 	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE)
 	Fecha = models.DateTimeField()
 	redirect_url = models.CharField(max_length=100, null=True, blank=True)
+	video = models.FileField(null=True, blank=True)
 
-class WelcomeWebpage(models.Model):	
+class WelcomeWebpage(models.Model):
 	related_expo = models.ForeignKey(Expo, on_delete=models.CASCADE)
 
 class PlatformUser(models.Model):
