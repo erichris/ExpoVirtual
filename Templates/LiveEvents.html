@@ -42,19 +42,32 @@
                 </div>
                 <div class="col-sm-8" >
                     <div class="row">
-                        <div class="col-sm-12 container" style="">
+                        <div  class="col-sm-12 container" style="" onclick="playPause()">
                             <!--iframe class="responsive-iframe" src="{{ event.redirect_url }}" width="1250" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe-->
-                            <iframe class="responsive-iframe" width="1250" height="700" src="https://www.youtube.com/embed/{{ event.redirect_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <video id="conferencias" class="responsive-iframe" width="1250" height="700" preload="none">
+                              <source src="http://tuexpovirtual.mx/{{ event.video }}" type="video/mp4">
+                              Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+<script>
+        var i = 0;
+        function playPause() {
+          var myVideo = document.getElementById("conferencias");
+          if(i == 0){
+            myVideo.play();
+            myVideo.currentTime = {{ currentTime }};
+            i += 1;
+          }
+        }
+</script>
 
 {% endblock %}
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/RY8V4F2m_fk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 {% block footer %}
 

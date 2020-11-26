@@ -11,6 +11,7 @@ from django.http import JsonResponse, HttpResponse
 import random
 from datetime import datetime
 import csv
+from datetime import timedelta
 
 @csrf_exempt
 def layout(request, expo_name):
@@ -489,20 +490,28 @@ def eventGL(request, expo_name):
 	events = Eventos.objects.filter(related_expo=selected_expo)
 	now = datetime.now()
 
-	current_event = events[0]
-	eventHour = datetime(events[0].Fecha.year, events[0].Fecha.month, events[0].Fecha.day, events[0].Fecha.hour, events[0].Fecha.minute)
-	minsTo = eventHour - datetime.now()
-
+	#current_event = events[0]
+	current_event = "";
+	print("----------")
+	closestMins = 9999999999;
 	for event in events:
 		eventHour = datetime(event.Fecha.year, event.Fecha.month, event.Fecha.day, event.Fecha.hour, event.Fecha.minute)
-		timeToEvent = eventHour - datetime.now()
-		print(timeToEvent)
-		if(minsTo > timeToEvent):
+		eventHour -= timedelta(hours=6)
+		timeToEvent = eventHour - (datetime.now() - timedelta(hours=1))
+		print(eventHour)
+		print(timeToEvent.total_seconds())
+		print(3600 - timeToEvent.total_seconds())
+		print(closestMins > timeToEvent.total_seconds())
+		print(datetime.now() >= eventHour)
+		if(closestMins > timeToEvent.total_seconds() and datetime.now() >= eventHour and timeToEvent.total_seconds() > 0):
 			current_event = event
-
-
+			closestMins = timeToEvent;
+	print("----------")
+	#print(current_event.Fecha - timedelta(hours=6))
 	args = {}
 	args['event'] = current_event
+	args['currentTime'] = 3600 - closestMins.total_seconds()
+	print(args['currentTime'])
 	return TemplateResponse(request, "LiveEvents.html", args)
 
 @csrf_exempt
