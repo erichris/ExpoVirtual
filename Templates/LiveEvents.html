@@ -59,9 +59,16 @@
         function playPause() {
           var myVideo = document.getElementById("conferencias");
           if(i == 0){
-            myVideo.play();
-            myVideo.currentTime = {{ currentTime }};
             i += 1;
+            myVideo.play();
+            myVideo.addEventListener('canplay', function() {
+              if(i == 1){
+                this.currentTime = {{ currentTime }};
+                i+= 1;
+              }
+            });
+            //myVideo.currentTime = ;
+
           }
         }
 </script>
