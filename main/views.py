@@ -505,12 +505,12 @@ def eventGL(request, expo_name):
 		print(datetime.now() >= eventHour)
 		if(closestMins > timeToEvent.total_seconds() and datetime.now() >= eventHour and timeToEvent.total_seconds() > 0):
 			current_event = event
-			closestMins = timeToEvent;
+			closestMins = timeToEvent.total_seconds();
 	print("----------")
 	#print(current_event.Fecha - timedelta(hours=6))
 	args = {}
 	args['event'] = current_event
-	args['currentTime'] = 3600 - closestMins.total_seconds()
+	args['currentTime'] = 3600 - closestMins
 	print(args['currentTime'])
 	return TemplateResponse(request, "LiveEvents.html", args)
 
