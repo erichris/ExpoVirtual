@@ -42,9 +42,9 @@
                 </div>
                 <div class="col-sm-8" >
                     <div class="row">
-                        <div  class="col-sm-12 container" style="" onclick="playPause()">
+                        <div  class="col-sm-12 container" style="" onclick="playPause()" oncontextmenu="return false;">
                             <!--iframe class="responsive-iframe" src="{{ event.redirect_url }}" width="1250" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe-->
-                            <video id="conferencias" class="responsive-iframe" width="1250" height="700" preload="none">
+                            <video id="conferencias" class="responsive-iframe" width="1250" height="700" preload="none" oncontextmenu="return false;">
                               <source src="http://tuexpovirtual.mx/{{ event.video }}" type="video/mp4">
                               Your browser does not support the video tag.
                             </video>

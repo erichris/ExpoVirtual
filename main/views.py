@@ -499,13 +499,16 @@ def eventGL(request, expo_name):
 		eventHour -= timedelta(hours=6)
 		timeToEvent = eventHour - (datetime.now() - timedelta(hours=1))
 		print(eventHour)
+		print(closestMins)
 		print(timeToEvent.total_seconds())
-		print(3600 - timeToEvent.total_seconds())
 		print(closestMins > timeToEvent.total_seconds())
 		print(datetime.now() >= eventHour)
+		print(timeToEvent.total_seconds() > 0)
 		if(closestMins > timeToEvent.total_seconds() and datetime.now() >= eventHour and timeToEvent.total_seconds() > 0):
 			current_event = event
 			closestMins = timeToEvent.total_seconds();
+			print("closest")
+		print("----------")
 	print("----------")
 	#print(current_event.Fecha - timedelta(hours=6))
 	args = {}
