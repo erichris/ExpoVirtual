@@ -639,7 +639,26 @@ def appController(request, action):
 				if selected_stand.banner_horizontal3 and hasattr(selected_stand.banner_horizontal3, 'url'):
 					args["STANDS"][selected_stand.id] ['BANNER_HORIZONTAL3'] = selected_stand.banner_horizontal3.url
 			args['STATUS'] = 0
+		if action == "GetEvents":
+			print("GetEvents")
+			selected_expo = Expo.objects.get(nombre=request.POST['EXPO_NAME'])
+			print(request.POST['EXPO_NAME'])
+			events = Eventos.objects.filter(related_expo=selected_expo)
+			args["EVENTOS"] = {}
 
+			cont = 0
+			for event in events:
+				args["EVENTOS"][event.id] = {}
+				args["EVENTOS"][event.id] ['ID'] = event.id
+				args["EVENTOS"][event.id] ['FECHA'] = event.Fecha
+				args["EVENTOS"][event.id] ['DIA'] = event.Fecha.day
+				args["EVENTOS"][event.id] ['MES'] = event.Fecha.month
+				args["EVENTOS"][event.id] ['ANO'] = event.Fecha.year
+				args["EVENTOS"][event.id] ['HORA'] = event.Fecha.hour
+				args["EVENTOS"][event.id] ['MINUTO'] = event.Fecha.minute
+				if event.video != "":
+					args["EVENTOS"][event.id] ['EVENT_URL'] = event.video.url
+			args['STATUS'] = 0
 		if action == "UploadDistribution":
 			print("UploadDistribution")
 			acomodo = request.POST['ACOMODO']
